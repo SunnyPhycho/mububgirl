@@ -79,40 +79,60 @@ ul { list-style: none; }
     margin-top: 2px;
 }
 
-/* --- [3. 햄버거 버튼 공통 스타일] --- */
+/* --- [3. 햄버거 버튼 공통 스타일 (수정됨)] --- */
 .menu-icon {
     background: none;
     border: none;
     cursor: pointer;
     width: 30px;
-    height: 25px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    height: 24px; /* 높이 고정 */
+    position: relative; /* 내부 span들을 이 기준으로 배치 */
     padding: 0;
     z-index: 1100;
+    /* 버튼 자체에는 overflow hidden을 주지 않음 */
 }
 
 .menu-icon span {
     display: block;
     width: 100%;
     height: 3px;
-    background-color: var(--color-magic-pink); /* 마법소녀풍 색상 */
+    background-color: var(--color-magic-pink);
     border-radius: 2px;
-    transition: all 0.3s ease-in-out;
-    box-shadow: 0 0 3px var(--color-magic-pink); /* 약간의 발광 */
+    position: absolute; /* 절대 위치로 고정 */
+    left: 0;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* 부드러운 움직임 */
+    box-shadow: 0 0 3px var(--color-magic-pink);
+    transform-origin: center; /* 회전 중심을 가운데로 */
 }
 
-/* X 모양 변환 (모바일/데스크탑 공통 로직) */
+/* 3개의 작대기 위치 강제 지정 */
+.menu-icon span:nth-child(1) {
+    top: 0;
+}
+.menu-icon span:nth-child(2) {
+    top: 50%;
+    transform: translateY(-50%); /* 정확히 정중앙 배치 */
+}
+.menu-icon span:nth-child(3) {
+    bottom: 0;
+}
+
+/* X 모양 변환 로직 (좌표 이동 -> 회전) */
 .menu-icon.active span:nth-child(1) {
-    transform: translateY(11px) rotate(45deg);
-    background-color: var(--color-blood-red); /* 열리면 무협풍(빨강)으로 변함 */
+    top: 50%; /* 가운데로 이동 */
+    transform: translateY(-50%) rotate(45deg); /* 높이 보정 후 회전 */
+    background-color: var(--color-blood-red);
 }
+
 .menu-icon.active span:nth-child(2) {
-    opacity: 0;
+    opacity: 0; /* 가운데 줄은 투명화 */
+    transform: translateY(-50%) scale(0); /* 작아지면서 사라짐 */
 }
+
 .menu-icon.active span:nth-child(3) {
-    transform: translateY(-11px) rotate(-45deg);
+    bottom: auto; /* bottom 속성 해제 */
+    top: 50%; /* 가운데로 이동 */
+    transform: translateY(-50%) rotate(-45deg); /* 높이 보정 후 반대 회전 */
     background-color: var(--color-blood-red);
 }
 
