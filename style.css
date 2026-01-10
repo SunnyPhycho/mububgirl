@@ -1,0 +1,291 @@
+/* --- [1. 기본 설정 및 변수] --- */
+:root {
+    /* 무협 테마 색상 (배경/진중함) */
+    --color-wuxia-bg: #1a2e22; /* 짙은 대나무 숲 색 */
+    --color-wuxia-text: #e0e0e0;
+    --color-blood-red: #8a1c1c; /* 포인트: 핏자국 레드 */
+    
+    /* 마법소녀 테마 색상 (버튼/장식) */
+    --color-magic-pink: #ffb7d5;
+    --color-magic-glow: #fff0f5;
+    
+    /* 폰트 */
+    --font-serif: 'Nanum Myeongjo', serif; /* 무협 느낌 */
+    --font-cute: 'Hi Melody', cursive; /* 마법소녀 느낌 */
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--color-wuxia-bg);
+    color: var(--color-wuxia-text);
+    font-family: var(--font-serif);
+    overflow-x: hidden;
+    /* 대나무 숲 느낌의 은은한 그라데이션 배경 */
+    background-image: linear-gradient(180deg, #132018 0%, #1f382a 100%);
+    min-height: 100vh;
+}
+
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+
+/* --- [2. 헤더 및 레이아웃] --- */
+#main-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.7); /* 반투명 배경 */
+    backdrop-filter: blur(5px);
+    border-bottom: 1px solid var(--color-blood-red);
+    transition: all 0.3s ease;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* 제목 스타일 */
+.title-area {
+    text-align: center;
+    flex-grow: 1; /* 모바일에서 가운데 정렬을 위해 */
+}
+
+.main-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.magical-text {
+    color: var(--color-magic-pink);
+    font-family: var(--font-cute);
+    text-shadow: 0 0 5px var(--color-magic-pink);
+}
+
+.sub-title {
+    font-size: 0.8rem;
+    color: #aaa;
+    margin-top: 2px;
+}
+
+/* --- [3. 햄버거 버튼 공통 스타일] --- */
+.menu-icon {
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 30px;
+    height: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0;
+    z-index: 1100;
+}
+
+.menu-icon span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: var(--color-magic-pink); /* 마법소녀풍 색상 */
+    border-radius: 2px;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 0 3px var(--color-magic-pink); /* 약간의 발광 */
+}
+
+/* X 모양 변환 (모바일/데스크탑 공통 로직) */
+.menu-icon.active span:nth-child(1) {
+    transform: translateY(11px) rotate(45deg);
+    background-color: var(--color-blood-red); /* 열리면 무협풍(빨강)으로 변함 */
+}
+.menu-icon.active span:nth-child(2) {
+    opacity: 0;
+}
+.menu-icon.active span:nth-child(3) {
+    transform: translateY(-11px) rotate(-45deg);
+    background-color: var(--color-blood-red);
+}
+
+/* --- [4. 모바일 전용 스타일] --- */
+.mobile-only { display: block; }
+.desktop-only { display: none; }
+
+/* 모바일 메뉴 오버레이 */
+#mobile-nav-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(20, 30, 25, 0.95);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateX(-100%); /* 평소엔 숨김 */
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 999;
+}
+
+#mobile-nav-overlay.open {
+    transform: translateX(0);
+}
+
+#mobile-nav-overlay ul {
+    text-align: center;
+}
+
+#mobile-nav-overlay li {
+    margin: 30px 0;
+}
+
+.magical-link-mobile {
+    font-size: 1.5rem;
+    color: var(--color-wuxia-text);
+    font-weight: bold;
+    border-bottom: 2px solid var(--color-magic-pink);
+    padding-bottom: 5px;
+    transition: color 0.3s;
+}
+
+.magical-link-mobile:hover {
+    color: var(--color-magic-pink);
+}
+
+/* --- [5. 데스크탑 전용 스타일 (@media)] --- */
+@media (min-width: 768px) {
+    .mobile-only { display: none; }
+    .desktop-only { display: block; }
+    
+    .title-area {
+        text-align: left; /* 데스크탑에선 왼쪽 정렬 */
+    }
+
+    .main-title { font-size: 1.5rem; }
+
+    /* 데스크탑 메뉴 래퍼 */
+    #desktop-menu-wrapper {
+        position: relative;
+        padding-bottom: 10px; /* 호버 영역 확장을 위한 패딩 */
+    }
+
+    /* 데스크탑 드롭다운 메뉴 */
+    .desktop-nav {
+        position: absolute;
+        top: 40px; /* 버튼 아래 위치 */
+        right: 0;
+        background: rgba(30, 40, 35, 0.95);
+        border: 1px solid var(--color-magic-pink); /* 마법소녀풍 테두리 */
+        border-radius: 0 0 10px 10px;
+        width: 200px;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease, opacity 0.3s ease;
+        opacity: 0;
+        box-shadow: 0 5px 15px rgba(255, 183, 213, 0.2);
+    }
+
+    /* 호버 시 확장 로직 */
+    #desktop-menu-wrapper:hover .desktop-nav {
+        max-height: 300px; /* 충분한 높이 */
+        opacity: 1;
+        padding: 10px 0;
+    }
+    
+    /* 호버 시 버튼 모양 변경을 위한 연동은 JS로 처리하거나 
+       CSS로 wrapper:hover .menu-icon span {...} 처리가 가능하지만,
+       명확한 X 변환을 위해 JS와 연동된 .active 클래스를 활용합니다. */
+
+    .desktop-nav li {
+        padding: 10px 20px;
+        text-align: right;
+    }
+
+    .magical-link {
+        color: var(--color-wuxia-text);
+        font-size: 1rem;
+        position: relative;
+        transition: all 0.3s;
+    }
+
+    /* 마우스 올리면 샤랄라 효과 (마법소녀 장식) */
+    .magical-link:hover {
+        color: var(--color-magic-pink);
+        text-shadow: 0 0 8px var(--color-magic-pink);
+    }
+    .magical-link:hover::before {
+        content: '✨'; /* 장식 아이콘 */
+        margin-right: 5px;
+    }
+}
+
+/* --- [6. 메인 콘텐츠 스타일] --- */
+.content-wrapper {
+    padding-top: 80px; /* 헤더 높이만큼 띄움 */
+    max-width: 800px;
+    margin: 0 auto;
+    padding-bottom: 50px;
+    text-align: center;
+}
+
+.hero-image-container {
+    width: 90%;
+    margin: 20px auto;
+    aspect-ratio: 16/9;
+    border: 2px dashed var(--color-blood-red); /* 나중에 이미지 넣을 곳 표시 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0,0,0,0.3);
+    border-radius: 15px;
+    position: relative;
+}
+
+/* 마법소녀 장식: 이미지 박스 주변에 빛나는 효과 */
+.hero-image-container::after {
+    content: '';
+    position: absolute;
+    top: -5px; left: -5px; right: -5px; bottom: -5px;
+    border-radius: 20px;
+    border: 1px solid var(--color-magic-pink);
+    opacity: 0.5;
+    pointer-events: none;
+    box-shadow: 0 0 10px var(--color-magic-pink);
+}
+
+.image-placeholder {
+    color: #888;
+    font-size: 0.9rem;
+}
+
+.intro-text h2 {
+    margin-top: 30px;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    color: var(--color-wuxia-text);
+    border-bottom: 2px solid var(--color-blood-red);
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.intro-text .highlight {
+    color: var(--color-magic-pink);
+    font-weight: bold;
+}
+
+.scary-text {
+    font-family: var(--font-serif);
+    color: #666;
+    font-size: 0.9rem;
+    font-style: italic;
+    margin-top: 20px;
+}
