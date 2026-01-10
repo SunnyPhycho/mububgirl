@@ -806,76 +806,137 @@ ul { list-style: none; }
 }
 
 
-/* === [10-2. 카드 리스트 & 등장 애니메이션] === */
+/* --- [10. 캐릭터 페이지: 카드 슬라이더 (Carousel) 리뉴얼] --- */
 
+/* 10-1. 필터 패널 (수정: 잘림 방지) */
+.filter-panel {
+    background: transparent;
+    padding: 0 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    position: relative;
+    z-index: 100; /* 카드보다 위에 오도록 */
+}
+/* (나머지 필터 버튼 스타일은 이전과 동일, 생략 가능) */
+
+
+/* 10-2. 슬라이더 컨테이너 (여기가 핵심입니다) */
 .char-list-container {
-    display: flex;
-    gap: 40px;
-    padding: 20px;
-    /* 기본적으로 숨김 처리 후 JS로 등장시킴 */
-    min-height: 500px; 
+    /* 화면 중앙에 위치 */
+    width: 100%;
+    margin: 0 auto;
+    
+    /* 스크롤 스냅 설정 */
+    scroll-behavior: smooth; /* 부드러운 이동 */
+    
+    /* 스크롤바 숨기기 (깔끔하게) */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
+}
+.char-list-container::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
 }
 
-/* 모바일: 가로 스크롤 (Swipe) */
+
+/* === [모바일: 가로(Horizontal) 슬라이드] === */
 @media (max-width: 1023px) {
     .char-list-container {
+        display: flex;
         flex-direction: row;
+        
+        /* 가로 스크롤 & 스냅 */
         overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        padding-bottom: 40px;
+        overflow-y: hidden;
+        scroll-snap-type: x mandatory; /* x축 강제 스냅 */
+        
+        height: 70vh; /* 화면 높이의 70% 차지 */
         align-items: center; /* 세로 중앙 정렬 */
+        padding: 0 50vw; /* 좌우 여백을 줘서 첫 카드가 중앙에 오게 */
     }
-    
+
     .char-card {
-        scroll-snap-align: center;
+        scroll-snap-align: center; /* 중앙에 멈춤 */
         flex-shrink: 0;
-        /* 초기 상태: 투명하고 약간 축소 */
-        opacity: 0;
-        transform: scale(0.9) translateX(50px);
-        transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        
+        /* 모바일 카드 크기 */
+        width: 80vw; 
+        max-width: 320px;
+        height: 55vh;
+        margin: 0 15px; /* 카드 간 간격 */
+        
+        /* 선택되지 않은 카드 흐리게 처리 (연출) */
+        opacity: 0.5;
+        transform: scale(0.9);
+        transition: all 0.5s ease;
     }
-    
-    /* 화면에 들어오면(show 클래스) 등장 */
-    .char-card.show {
+
+    /* 중앙에 온 카드만 강조 */
+    .char-card.active {
         opacity: 1;
-        transform: scale(1) translateX(0);
+        transform: scale(1);
+        z-index: 10;
     }
 }
 
-/* 데스크탑: 세로 리스트 (Scroll) */
+
+/* === [데스크탑: 세로(Vertical) 슬라이드] === */
 @media (min-width: 1024px) {
     .char-list-container {
-        flex-direction: column;
-        align-items: center;
+        display: block; /* 블록 요소 */
+        
+        /* 세로 스크롤 & 스냅 */
+        overflow-y: auto;
+        overflow-x: hidden;
+        scroll-snap-type: y mandatory; /* y축 강제 스냅 */
+        
+        height: 600px; /* 뷰포트 높이 고정 (이 안에서만 스크롤) */
+        position: relative;
     }
 
     .char-card {
-        width: 600px; /* 더 넓게 */
-        height: 320px;
-        /* 초기 상태: 투명하고 아래에 있음 */
-        opacity: 0;
-        transform: translateY(100px);
-        transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        scroll-snap-align: center; /* 중앙에 멈춤 */
+        margin: 50px auto; /* 위아래 간격 */
+        
+        /* 데스크탑 카드 크기 (가로형) */
+        width: 700px;
+        height: 400px;
+        
+        /* 등장 연출 */
+        opacity: 0.3;
+        transform: scale(0.9) translateY(20px);
+        transition: all 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
     }
 
-    /* 화면에 들어오면 등장 */
-    .char-card.show {
+    /* 중앙에 온 카드 강조 */
+    .char-card.active {
         opacity: 1;
-        transform: translateY(0);
+        transform: scale(1) translateY(0);
+        box-shadow: 0 20px 50px rgba(0,0,0,0.5); /* 붕 뜬 느낌 */
     }
+}
+
+
+/* 10-3. 카드 내부 디자인 (이전과 동일하지만 크기 대응) */
+.char-card {
+    position: relative;
+    perspective: 1500px;
+    cursor: pointer;
 }
 
 .card-inner {
     position: relative;
     width: 100%;
     height: 100%;
-    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* 쫀득한 회전 */
+    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     transform-style: preserve-3d;
 }
 
 .char-card.flipped .card-inner {
     transform: rotateY(180deg);
 }
+
+/* ... (이하 card-front, card-back, old-stamp 등 디자인은 이전 코드 유지) ... */
+/* 단, card-visual 등의 비율은 유지됩니다. */
 
 /* --- [10. 수집형 카드 게임(CCG) 스타일 (리뉴얼)] --- */
 
