@@ -105,12 +105,34 @@ function createStarDust(cardElement) {
     }
 }
 
-// 2. 필터링 (Filtering)
-const checkboxes = document.querySelectorAll('.filter-group input[type="checkbox"]');
+/* --- [스크롤 등장 애니메이션 & 필터링] --- */
+
+// 1. 등장 애니메이션 감지기 (Intersection Observer)
+const observerOptions = {
+    root: null, // 뷰포트 기준
+    rootMargin: '0px',
+    threshold: 0.1 // 10%만 보여도 작동
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('show'); // 화면에 들어오면 show 클래스 추가
+        }
+    });
+}, observerOptions);
+
+// 초기 로드 시 모든 카드에 관찰자 부착
+document.querySelectorAll('.char-card').forEach(card => {
+    observer.observe(card);
+});
+
+
+// 2. 필터링 로직 수정 (애니메이션 재설정 포함)
+const checkboxes = document.querySelectorAll('.filter-btn input[type="checkbox"]');
 const charCards = document.querySelectorAll('.char-card');
 
 function filterCards() {
-    // 현재 체크된 값들을 수집
     const checkedValues = {
         gender: [],
         role: [],
@@ -123,26 +145,35 @@ function filterCards() {
         }
     });
 
-    // 모든 카드 순회하며 검사
     charCards.forEach(card => {
         const gender = card.getAttribute('data-gender');
         const role = card.getAttribute('data-role');
         const contract = card.getAttribute('data-contract');
 
-        // 3가지 조건(성별, 신분, 계약) 중 하나라도 체크 리스트에 없으면 숨김
         const matchGender = checkedValues.gender.includes(gender);
         const matchRole = checkedValues.role.includes(role);
         const matchContract = checkedValues.contract.includes(contract);
 
         if (matchGender && matchRole && matchContract) {
-            card.style.display = 'block'; // 혹은 flex
+            // 다시 보여줄 때
+            card.style.display = 'block'; // 공간 차지하게 함 (flex 아이템)
+            
+            // 애니메이션 리셋을 위해 잠깐 클래스 뺐다가 다시 넣기 (딜레이)
+            setTimeout(() => {
+                if (!card.classList.contains('show')) {
+                    observer.observe(card); // 다시 관찰 시작
+                }
+            }, 50);
+
         } else {
+            // 숨길 때
             card.style.display = 'none';
+            card.classList.remove('show'); // 애니메이션 클래스 제거
         }
     });
 }
 
-// 체크박스 변경 시마다 필터 함수 실행
+// 체크박스 이벤트 연결
 checkboxes.forEach(box => {
     box.addEventListener('change', filterCards);
 });
