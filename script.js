@@ -181,6 +181,9 @@ function filterCards() {
             card.classList.remove('show'); // 애니메이션 클래스 제거
         }
     });
+    
+    // [여기 추가!] 필터링이 끝나면 스크롤 위치를 맨 앞으로 돌림
+    resetScroll();
 }
 
 // 체크박스 이벤트 연결
