@@ -1200,9 +1200,18 @@ ul { list-style: none; }
         padding: 10px;
     }
     
-    /* 4. 이미지 높이 조정 (공간 확보) */
+        /* 4. 이미지 높이 조정 및 잘림 방지 */
     .card-visual {
-        height: 70%; /* 이미지를 좀 더 길게 */
+        height: 70%; 
+        
+        /* [중요] 이미지가 잘리지 않게 설정 */
+        background-size: contain; /* 이미지가 다 보이게 맞춤 (여백 생김) */
+        background-repeat: no-repeat; /* 반복 방지 */
+        background-position: center; /* 정중앙 배치 */
+        
+        /* 여백 부분을 어둡게 처리하여 사진틀처럼 보이게 함 */
+        background-color: #1a1a1a; 
+        border-bottom: 2px dashed #5d4037; /* 사진과 텍스트 구분선 */
     }
     
     .card-info-wuxia {
