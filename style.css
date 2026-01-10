@@ -713,44 +713,155 @@ ul { list-style: none; }
 }
 
 /* --- [10. 수집형 카드 게임(CCG) 스타일 레이아웃] --- */
+/* --- [10. 캐릭터 페이지 리뉴얼] --- */
 
-/* 컨테이너 */
-.char-list-container {
-    display: flex;
-    gap: 30px;
-    padding: 20px;
-    justify-content: center;
-    flex-wrap: wrap; /* 데스크탑에선 줄바꿈 */
+.char-wrapper {
+    padding-top: 100px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-bottom: 50px;
 }
 
-/* 모바일 가로 스크롤 복구 */
+/* === [10-1. 필터 패널: 세련된 명패 스타일] === */
+.filter-panel {
+    background: transparent; /* 배경 투명하게 */
+    padding: 0 20px;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.filter-title {
+    font-size: 1.2rem;
+    color: #fff;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px rgba(255, 183, 213, 0.5);
+    display: inline-block;
+    border-bottom: 2px solid var(--color-magic-pink);
+    padding-bottom: 5px;
+}
+
+.filter-groups {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px; /* 그룹 간 간격 */
+}
+
+.filter-group {
+    display: flex;
+    gap: 8px; /* 버튼 간 간격 */
+    align-items: center;
+}
+
+.filter-label-text {
+    color: #aaa;
+    font-size: 0.9rem;
+    margin-right: 5px;
+    font-weight: bold;
+}
+
+/* 실제 체크박스는 숨김 */
+.filter-btn input[type="checkbox"] {
+    display: none;
+}
+
+/* 커스텀 버튼 디자인 (명패 느낌) */
+.filter-btn span {
+    display: inline-block;
+    padding: 8px 16px;
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid #555;
+    border-radius: 20px;
+    color: #bbb;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    user-select: none;
+}
+
+/* 마우스 올렸을 때 */
+.filter-btn:hover span {
+    border-color: #fff;
+    color: #fff;
+}
+
+/* 체크되었을 때 (Active) - 테마별 색상 */
+.filter-btn input:checked + span {
+    background: var(--color-blood-red);
+    color: #fff;
+    border-color: var(--color-blood-red);
+    box-shadow: 0 0 10px var(--color-blood-red);
+    font-weight: bold;
+}
+
+/* 계약 필터의 경우 색상 다르게 (선=파랑, 악=빨강, 무=회색) */
+.filter-btn.contract-good input:checked + span {
+    background: #3498db; border-color: #3498db; box-shadow: 0 0 10px #3498db;
+}
+.filter-btn.contract-evil input:checked + span {
+    background: #e74c3c; border-color: #e74c3c; box-shadow: 0 0 10px #e74c3c;
+}
+.filter-btn.contract-none input:checked + span {
+    background: #7f8c8d; border-color: #7f8c8d; box-shadow: 0 0 10px #7f8c8d;
+}
+
+
+/* === [10-2. 카드 리스트 & 등장 애니메이션] === */
+
+.char-list-container {
+    display: flex;
+    gap: 40px;
+    padding: 20px;
+    /* 기본적으로 숨김 처리 후 JS로 등장시킴 */
+    min-height: 500px; 
+}
+
+/* 모바일: 가로 스크롤 (Swipe) */
 @media (max-width: 1023px) {
     .char-list-container {
-        display: flex;
-        flex-wrap: nowrap;
-        justify-content: flex-start;
+        flex-direction: row;
         overflow-x: auto;
         scroll-snap-type: x mandatory;
         padding-bottom: 40px;
+        align-items: center; /* 세로 중앙 정렬 */
+    }
+    
+    .char-card {
+        scroll-snap-align: center;
+        flex-shrink: 0;
+        /* 초기 상태: 투명하고 약간 축소 */
+        opacity: 0;
+        transform: scale(0.9) translateX(50px);
+        transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    
+    /* 화면에 들어오면(show 클래스) 등장 */
+    .char-card.show {
+        opacity: 1;
+        transform: scale(1) translateX(0);
     }
 }
 
-/* 카드 기본 틀 (사이즈 키움) */
-.char-card {
-    position: relative;
-    width: 300px; /* 모바일/데스크탑 기본 폭 */
-    height: 450px; /* 세로로 긴 CCG 비율 */
-    flex-shrink: 0;
-    perspective: 1500px; /* 3D 효과 깊이감 */
-    scroll-snap-align: center;
-    cursor: pointer;
-}
-
-/* 데스크탑에서 가로형 카드를 원하신다면 */
+/* 데스크탑: 세로 리스트 (Scroll) */
 @media (min-width: 1024px) {
+    .char-list-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
     .char-card {
-        width: 500px; /* 더 넓게 */
-        height: 300px; /* 가로형 */
+        width: 600px; /* 더 넓게 */
+        height: 320px;
+        /* 초기 상태: 투명하고 아래에 있음 */
+        opacity: 0;
+        transform: translateY(100px);
+        transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    /* 화면에 들어오면 등장 */
+    .char-card.show {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
