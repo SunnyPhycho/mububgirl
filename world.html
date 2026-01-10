@@ -12,7 +12,7 @@
 </head>
 <body>
 
-    <!-- [헤더 영역] (Index와 동일 구조) -->
+    <!-- [헤더 영역] -->
     <header id="main-header">
         <div class="header-container">
             <button id="mobile-menu-btn" class="menu-icon mobile-only">
@@ -49,91 +49,110 @@
         
         <!-- 1. 개요 섹션 -->
         <section class="world-section">
-            <h2 class="section-title">무협(武俠)과 이변(異變)</h2>
+            <h2 class="section-title">개요: 무협(武俠)과 이변(異變)</h2>
             <div class="paper-scroll">
-                <p>무맹(武盟)과 황실의 합의 하에 설립된 <strong>'의무교육(義敎)'</strong> 기관, 학관(學館).</p>
-                <p>겉으로는 청년 무인들의 소양을 기르는 평범한 교육 시설이지만,<br>
-                그 이면에는 <strong>차원을 넘어 간섭해오는 두 세력, [선]과 [악]</strong>이 존재합니다.</p>
-                <br>
-                <p>학관은 이들의 대리전이 벌어지는 무대이자,<br>
-                세계의 균형을 유지하기 위한 거대한 제방입니다.</p>
+                <p class="intro-quote">
+                    "강호에 도래한 두 힘, 선(善)과 악(惡).<br>
+                    그들은 직접 강림하는 대신, <strong>'대행 충돌(代行衝突)'</strong>을 택했다."
+                </p>
+                <div class="divider"></div>
+                <p>
+                    본 세계는 외차원 세력인 [선]과 [악]의 대리전 상태에 있습니다.<br>
+                    허나 그들은 세계의 붕괴를 막기 위해 직접 개입하지 않으며,<br>
+                    <strong>'학관(學館)'</strong>의 학생들에게 <strong>계약(契約)</strong>을 통해 힘을 빌려주는 방식을 취합니다.
+                </p>
             </div>
         </section>
 
-        <!-- 2. 연혁(TL) 섹션: T0~T12를 역사 기록처럼 각색 -->
+        <!-- 2. 정사(正史) 타임라인 (T0~T12 기반) -->
         <section class="world-section">
-            <h2 class="section-title">비망록: 정사(正史) 요약</h2>
-            <!-- 타임라인 전체를 종이 박스로 감싸기 -->
+            <h2 class="section-title">비망록: 정사(正史)</h2>
             <div class="paper-scroll">
                 <ul class="timeline">
+                    <!-- T0 -->
                     <li class="timeline-item">
                         <span class="time-label">구세계(前)</span>
                         <div class="time-content">
-                            <strong>변신 대전과 붕괴</strong>
-                            <p>선과 악의 전면전 끝에 균형이 임계점을 넘어 세계가 붕괴함. <br>승리한 쪽도 패배한 쪽도 없이 공멸한다는 교훈을 남김.</p>
+                            <strong>공멸(共滅)의 기억</strong>
+                            <p>먼 과거, 선과 악의 전면전으로 균형이 임계점을 넘어 세계가 붕괴하였다.<br>
+                            승자도 패자도 없는 파멸 속에서 그들은 교훈을 얻었다.<br>
+                            <strong>"직접적인 강림은 세계를 부술 뿐이다."</strong></p>
                         </div>
                     </li>
+                    <!-- T1, T5, T7 -->
                     <li class="timeline-item">
                         <span class="time-label">접촉기</span>
                         <div class="time-content">
-                            <strong>현계(現界) 관측과 접점</strong>
-                            <p>두 세력이 현재의 무림을 새로운 '전장'으로 선정.<br>마(魔)가 먼저 강자존의 논리로 접촉해왔으며, 이에 대응해 선(善) 또한 무맹을 통해 협력을 요청함.</p>
+                            <strong>마(魔)의 선점, 협(俠)의 후행</strong>
+                            <p>두 세력은 현재의 무림을 새로운 전장으로 선정했다.<br>
+                            <strong>마(魔)</strong>가 먼저 강자존의 논리로 강호인과 <strong>'악계(惡契)'</strong>를 맺기 시작했고,<br>
+                            이에 대응해 <strong>선(善)</strong> 또한 무맹에 현현하여 협력을 요청했다.</p>
                         </div>
                     </li>
+                    <!-- T9~T11 -->
                     <li class="timeline-item">
                         <span class="time-label">설립기</span>
                         <div class="time-content">
                             <strong>의무교육(義敎)의 신설</strong>
-                            <p>무맹주와 황실의 합의 하에 '변신 가능 연령대'를 집결시키기 위한 명분으로 학관이 신설됨.<br>관무불침(官武不侵) 원칙 아래 황실은 터와 기록만을 제공.</p>
+                            <p>무맹주와 황실은 <strong>'변신 가능 연령대 집결'</strong>을 명분으로 학관을 설립했다.<br>
+                            황실은 <strong>관무불침(官武不侵)</strong> 원칙 하에 터와 기록만을 제공하며, 직접적인 지휘권은 없다.</p>
                         </div>
                     </li>
+                    <!-- T12, L1 -->
                     <li class="timeline-item highlight-item">
-                        <span class="time-label">현재</span>
+                        <span class="time-label">현황(現)</span>
                         <div class="time-content">
-                            <strong>학관의 일상과 비일상</strong>
-                            <p>평시에는 교육과 생활이 이어지나, 간헐적으로 '사건'이라 불리는 전투가 발생.<br>승패는 죽음이 아닌 <strong>'변신 해제'</strong>로 결정되며, 해제된 자는 일정 기간 재변신이 불가능하다.</p>
+                            <strong>학관의 생태</strong>
+                            <p>학관은 전투 병기 양성소가 아닌, 해당 연령대를 모아둔 사회적 장치다.<br>
+                            평시에는 <strong>교육과 생활이 우선</strong>시되며, 계약 여부와 상관없이 교우 관계가 이어진다.<br>
+                            전투는 학창 시절의 '간헐적인 사건'으로만 취급된다.</p>
                         </div>
                     </li>
                 </ul>
             </div>
         </section>
 
-        <!-- 3. 설정 상세 (변신/계약) - 마법소녀 테마 적용 -->
+
+        <!-- 3. 변신 시스템 (FX 태그 반영) -->
         <section class="world-section">
-            <h2 class="section-title"><span class="magical-font">변신(變身)</span> 시스템</h2>
+            <h2 class="section-title"><span class="magical-font">변신(變身)</span> 메커니즘</h2>
+            <p style="color:#aaa; margin-bottom:20px; text-align: center;">※ 시스템 출력: 필수 4요소 및 규칙</p>
             
             <div class="magical-zone">
                 <div class="info-grid">
-                    <!-- 카드 1: 계약 -->
+                    
+                    <!-- 카드 1: 계약 형태 (T10 반영) -->
                     <div class="magical-card">
-                        <h3>계약 (Contract)</h3>
-                        <p style="margin-bottom: 15px;">학관 재적생 분류 데이터:</p>
-                        <ul>
+                        <h3>재적생 분류 (Class)</h3>
+                        <p style="margin-bottom: 10px; font-size:0.9rem; color:#888;">입학 기준은 오직 '나이'이며, 계약은 강제되지 않는다.</p>
+                        <ul class="contract-list">
                             <li><span class="dot good"></span><strong>선계(善契):</strong> 수호와 질서</li>
                             <li><span class="dot evil"></span><strong>악계(惡契):</strong> 욕망과 자유</li>
-                            <li><span class="dot none"></span><strong>미계(未契):</strong> 선택 유보 / 일반</li>
+                            <li><span class="dot none"></span><strong>미계(未契):</strong> 일반 학생 (관망)</li>
                         </ul>
-                        <p class="caption" style="color:#ffb7d5;">※ 시스템 알림: 상호 적대 의무 없음.</p>
                     </div>
 
-                    <!-- 카드 2: 4대 요소 -->
+                    <!-- 카드 2: 4대 요소 (FX 태그 반영) -->
                     <div class="magical-card">
-                        <h3>필수 4요소</h3>
-                        <p style="margin-bottom: 15px;">변신 시 강제 출력 항목:</p>
+                        <h3>변신 4대 요소</h3>
+                        <p style="margin-bottom: 10px; font-size:0.9rem; color:#888;">변신 시 <strong>'과장된 형식미'</strong>가 강제 출력된다.</p>
                         <ol>
-                            <li><strong>변구(Item):</strong> 변신 매개체</li>
-                            <li><strong>호호(Shout):</strong> 시동 키워드 (쪽팔림 주의)</li>
-                            <li><strong>상징(Theme):</strong> 퍼스널 컬러/문양</li>
-                            <li><strong>명의(Code):</strong> 활동명 (사회적 익명성)</li>
+                            <li><strong>변구(變具):</strong> 힘을 담는 매개체 (부적, 장신구 등)</li>
+                            <li><strong>호호(呼號):</strong> 시동 구호 (※명령이 아닌 호출의 표식)</li>
+                            <li><strong>상징(象徵):</strong> 전신을 감싸는 빛과 테마</li>
+                            <li><strong>명의(名義):</strong> 활동용 이명(Code Name)</li>
                         </ol>
                     </div>
                 </div>
                 
-                <!-- 경고 박스 -->
+                <!-- 하단 경고문 (변신 태그 반영) -->
                 <div class="system-alert">
-                    <p>⚠ CAUTION ⚠</p>
-                    <p>기술명 외치기 및 배경 이펙트는<br>'시스템 강제 연출'입니다.</p>
-                    <span style="font-size: 0.8rem; color: #fff;">(거부할 수 없습니다.)</span>
+                    <p>⚠ 전투 및 해제 규칙 ⚠</p>
+                    <div style="text-align: left; font-size: 0.9rem; margin-top: 10px; line-height: 1.6;">
+                        1. <strong>승패 조건:</strong> 상대의 변신을 강제로 푸는 <strong>'해제(解除)'</strong>로 결정된다.<br>
+                        2. <strong>사망 불간섭:</strong> 패배는 죽음과 연동되지 않으며, 단순 기력 고갈이다.<br>
+                        3. <strong>냉각기:</strong> 해제된 자는 안정을 취할 때까지 <strong>'일시 재변신 불가'</strong> 상태가 된다.
+                    </div>
                 </div>
             </div>
         </section>
