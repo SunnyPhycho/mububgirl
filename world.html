@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>세계관 - 무림에서 마법소녀라니, 무리무리!</title>
+    <!-- 폰트 로드 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Hi+Melody&display=swap" rel="stylesheet">
@@ -14,13 +15,20 @@
     <!-- [헤더 영역] -->
     <header id="main-header">
         <div class="header-container">
+            <!-- 모바일용 메뉴 버튼 -->
             <button id="mobile-menu-btn" class="menu-icon mobile-only">
                 <span></span><span></span><span></span>
             </button>
+            
             <div class="title-area">
                 <h1 class="main-title"><a href="index.html">무림에서 마법소녀라니, <span class="magical-text">무리무리!</span></a></h1>
             </div>
+            
+            <!-- 데스크탑용 메뉴 영역 (여기에 버튼이 빠졌었습니다!) -->
             <div id="desktop-menu-wrapper" class="desktop-only">
+                <button id="desktop-menu-btn" class="menu-icon">
+                    <span></span><span></span><span></span>
+                </button>
                 <nav class="desktop-nav">
                     <ul>
                         <li><a href="world.html" class="magical-link">세계관 (World)</a></li>
@@ -32,6 +40,16 @@
         </div>
     </header>
 
+    <!-- 모바일 네비게이션 오버레이 -->
+    <nav id="mobile-nav-overlay">
+        <ul>
+            <li><a href="world.html" class="magical-link-mobile">세계관</a></li>
+            <li><a href="char.html" class="magical-link-mobile">캐릭터</a></li>
+            <li><a href="comment.html" class="magical-link-mobile">제작자의 말</a></li>
+        </ul>
+    </nav>
+
+    <!-- [세계관 콘텐츠 영역] -->
     <main class="content-wrapper world-content">
         
         <!-- 1. 인트로: 핵심 컨셉만 전달 -->
@@ -53,7 +71,7 @@
             </div>
         </section>
 
-        <!-- 2. 역사: 지루한 연표 대신 '왜 싸우는지'만 요약 -->
+        <!-- 2. 역사: 3줄 요약 -->
         <section class="world-section">
             <h2 class="section-title">비망록: 3줄 요약</h2>
             <div class="paper-scroll">
@@ -86,7 +104,7 @@
             </div>
         </section>
 
-        <!-- 3. 변신: 매뉴얼 대신 '감성'과 '경고' 위주 -->
+        <!-- 3. 변신: 감성 및 주의사항 -->
         <section class="world-section">
             <h2 class="section-title"><span class="magical-font">변신(變身)</span>의 대가</h2>
             
@@ -115,7 +133,7 @@
                     </div>
                 </div>
                 
-                <!-- 하단 경고문: 유쾌하게 처리 -->
+                <!-- 하단 경고문 -->
                 <div class="system-alert">
                     <p>⚠ 주의사항 ⚠</p>
                     <p>배경에 꽃이 휘날리거나 BGM이 깔리는 것은<br>
