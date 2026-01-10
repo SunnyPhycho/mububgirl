@@ -88,13 +88,34 @@
                         <span>未</span>
                     </label>
                 </div>
+
+                                <!-- [추가] 소속 (파벌) -->
+                <div class="filter-group">
+                    <span class="filter-label-text">소속</span>
+                    <label class="filter-btn faction-jeongpa">
+                        <input type="checkbox" name="faction" value="jeongpa" checked>
+                        <span>정파</span>
+                    </label>
+                    <label class="filter-btn faction-sapa">
+                        <input type="checkbox" name="faction" value="sapa" checked>
+                        <span>사파</span>
+                    </label>
+                    <label class="filter-btn faction-magyo">
+                        <input type="checkbox" name="faction" value="magyo" checked>
+                        <span>마교</span>
+                    </label>
+                    <label class="filter-btn faction-etc">
+                        <input type="checkbox" name="faction" value="etc" checked>
+                        <span>기타</span>
+                    </label>
+                </div>
             </div>
         </section>
         
         <!-- 2. 캐릭터 카드 리스트 영역 -->
         <section id="char-list" class="char-list-container">
 <!-- [제갈민우] -->
-<article class="char-card" data-gender="male" data-role="student" data-contract="good">
+<article class="char-card" data-gender="male" data-role="student" data-contract="good" data-faction="jeongpa">
     <div class="card-inner">
         <div class="card-front">
             <div class="card-visual" style="background-image: url('images/JMU_normal.png');"></div>
@@ -118,7 +139,7 @@
 </article>
 
 <!-- [백린] -->
-<article class="char-card" data-gender="male" data-role="student" data-contract="none">
+<article class="char-card" data-gender="male" data-role="student" data-contract="none" data-faction="magyo">
     <div class="card-inner no-flip">
         <div class="card-front">
             <div class="card-visual" style="background-image: url('images/백린_normal.png');"></div>
@@ -137,7 +158,7 @@
 </article>
 
 <!-- [서문준] -->
-<article class="char-card" data-gender="male" data-role="student" data-contract="none">
+<article class="char-card" data-gender="male" data-role="student" data-contract="none" data-faction="jeongpa">
     <div class="card-inner no-flip">
         <div class="card-front">
             <div class="card-visual" style="background-image: url('images/서문준_normal.png');"></div>
@@ -156,7 +177,7 @@
 </article>
 
 <!-- [공손유나] -->
-<article class="char-card" data-gender="female" data-role="student" data-contract="good">
+<article class="char-card" data-gender="female" data-role="student" data-contract="good" data-faction="jeongpa">
     <div class="card-inner">
         <div class="card-front">
             <div class="card-visual" style="background-image: url('images/공손유나_normal.png');"></div>
@@ -178,7 +199,7 @@
 </article>
 
 <!-- [남궁서현] (교관) -->
-<article class="char-card" data-gender="female" data-role="instructor" data-contract="none">
+<article class="char-card" data-gender="female" data-role="instructor" data-contract="none" data-faction="jeongpa">
     <div class="card-inner no-flip">
         <div class="card-front">
             <div class="card-visual" style="background-image: url('images/남궁서현_normal.png');"></div>
@@ -197,7 +218,7 @@
 </article>
 
 <!-- [윤혁진] (교관) -->
-<article class="char-card" data-gender="male" data-role="instructor" data-contract="none">
+<article class="char-card" data-gender="male" data-role="instructor" data-contract="none" data-faction="etc">
     <div class="card-inner no-flip">
         <div class="card-front">
             <div class="card-visual" style="background-image: url('images/윤혁진_normal.png');"></div>
@@ -216,7 +237,7 @@
 </article>
 
 <!-- [진소연] -->
-<article class="char-card" data-gender="female" data-role="student" data-contract="evil">
+<article class="char-card" data-gender="female" data-role="student" data-contract="evil" data-faction="jeongpa">
     <div class="card-inner">
         <div class="card-front">
             <div class="card-visual" style="background-image: url('images/진소연_normal.png');"></div>
@@ -238,7 +259,7 @@
 </article>
 
 <!-- [하연지] -->
-<article class="char-card" data-gender="female" data-role="student" data-contract="good">
+<article class="char-card" data-gender="female" data-role="student" data-contract="good" data-faction="jeongpa">
     <div class="card-inner">
         <div class="card-front">
             <div class="card-visual" style="background-image: url('images/하연지_normal.png');"></div>
@@ -260,7 +281,7 @@
 </article>
             
 <!-- [마연후] -->
-<article class="char-card" data-gender="male" data-role="student" data-contract="evil">
+<article class="char-card" data-gender="male" data-role="student" data-contract="evil" data-faction="magyo">
     <div class="card-inner">
         <div class="card-front">
             <div class="card-visual" style="background-image: url('images/마연후_normal.png');"></div>
