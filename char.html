@@ -78,72 +78,131 @@
 
         <!-- 2. 캐릭터 카드 리스트 영역 -->
         <section id="char-list" class="char-list-container">
+            <!-- [제갈민우] -->
+            <article class="char-card" data-gender="male" data-role="student" data-contract="good">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <div class="card-visual" style="background-image: url('images/제갈민우_normal.jpg');"></div>
+                        <div class="card-info-wuxia">
+                            <div class="wuxia-name">제갈민우</div>
+                            <div class="wuxia-mbti">INFJ / 1w2</div>
+                            <div class="wuxia-quote">"이것이 정의라 믿는다면, 내가 선두에 서겠다."</div>
+                        </div>
+                    </div>
+                    <div class="card-back" style="background-image: url('images/제갈민우_magic.jpg');">
+                        <div class="old-stamp good">善</div>
+                    </div>
+                </div>
+            </article>
             
-            <!-- [샘플 카드 1: 변신 가능 캐릭터] -->
-            <!-- data- 속성에 필터링용 정보를 넣습니다. -->
+            <!-- [백린] -->
+            <article class="char-card" data-gender="male" data-role="student" data-contract="none">
+                <div class="card-inner no-flip"> <!-- 미계약자라 뒤집기 불가 -->
+                    <div class="card-front">
+                        <div class="card-visual" style="background-image: url('images/백린_normal.jpg');"></div>
+                        <div class="card-info-wuxia">
+                            <div class="wuxia-name">백린</div>
+                            <div class="wuxia-mbti">ENTP / 7w8</div>
+                            <div class="wuxia-quote">"어, 미안! 내가 좀 급한 일이 있어서. 나중에 봐!"</div>
+                        </div>
+                    </div>
+                    <!-- 뒷면 없음 -->
+                </div>
+            </article>
+            
+            <!-- [서문준] -->
+            <article class="char-card" data-gender="male" data-role="student" data-contract="none">
+                <div class="card-inner no-flip">
+                    <div class="card-front">
+                        <div class="card-visual" style="background-image: url('images/서문준_normal.jpg');"></div>
+                        <div class="card-info-wuxia">
+                            <div class="wuxia-name">서문준</div>
+                            <div class="wuxia-mbti">INTP / 5w4</div>
+                            <div class="wuxia-quote">"음... 왜 저게 명분이 되는 거지? (중얼중얼)"</div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+            
+            <!-- [공손유나] -->
             <article class="char-card" data-gender="female" data-role="student" data-contract="good">
                 <div class="card-inner">
-                    
-                    <!-- 앞면 (Normal) -->
                     <div class="card-front">
-                        <div class="card-header">
-                            <span class="badge good">善契</span>
-                            <span class="name">남궁하린</span>
+                        <div class="card-visual" style="background-image: url('images/공손유나_normal.jpg');"></div>
+                        <div class="card-info-wuxia">
+                            <div class="wuxia-name">공손유나</div>
+                            <div class="wuxia-mbti">ENFP / 7w6</div>
+                            <div class="wuxia-quote">"정의의 이름으로 널 용서하지 않겠어! ...어라, 대사가 이게 아닌가?"</div>
                         </div>
-                        <div class="card-body">
-                            <!-- 나중에 이미지 들어갈 자리 -->
-                            <div class="char-img-placeholder">Image</div>
-                            <ul class="stats">
-                                <li><strong>소속:</strong> 정파 / 학생</li>
-                                <li><strong>나이:</strong> 19세</li>
-                                <li><strong>성격:</strong> S (주도적)</li>
-                            </ul>
-                            <p class="desc">"뭐? 마법소녀? 웃기지 마! 난 남궁세가의... 꺄악! 이거 치마가 왜 이래!"</p>
-                        </div>
-                        <div class="click-hint">Click to Transform ↻</div>
                     </div>
-
-                    <!-- 뒷면 (Transformed) -->
-                    <div class="card-back good-theme"> <!-- 테마색 클래스 -->
-                        <div class="card-header">
-                            <span class="badge transform">變身</span>
-                            <span class="name">샤이닝 소드 하린</span>
-                        </div>
-                        <div class="card-body">
-                            <div class="char-img-placeholder transform-img">Transform Image</div>
-                            <ul class="stats">
-                                <li><strong>호호:</strong> "악을 베는 은빛 섬광!"</li>
-                                <li><strong>상징:</strong> 은색 / 검기(劍氣)</li>
-                                <li><strong>변구:</strong> 머리핀 (검 모양)</li>
-                            </ul>
-                            <p class="desc">검강을 날리는 마법소녀(?). 본인은 무공이라고 우기지만, 시스템상 빔 병기 판정이다.</p>
-                        </div>
-                        <div class="click-hint">Click to Return ↻</div>
+                    <div class="card-back" style="background-image: url('images/공손유나_magic.jpg');">
+                        <div class="old-stamp good">善</div>
                     </div>
-
                 </div>
             </article>
-
-            <!-- [샘플 카드 2: 변신 불가/미계약 캐릭터 (뒷면 없음 예시)] -->
-             <article class="char-card" data-gender="male" data-role="instructor" data-contract="none">
-                <div class="card-inner no-flip"> <!-- no-flip 클래스 추가 -->
+            
+            <!-- [남궁서현] (교관) -->
+            <article class="char-card" data-gender="female" data-role="instructor" data-contract="none">
+                <div class="card-inner no-flip">
                     <div class="card-front">
-                        <div class="card-header">
-                            <span class="badge none">敎官</span>
-                            <span class="name">윤혁진</span>
-                        </div>
-                        <div class="card-body">
-                            <div class="char-img-placeholder">Image</div>
-                            <ul class="stats">
-                                <li><strong>소속:</strong> 교관 / 무계약</li>
-                                <li><strong>나이:</strong> 31세</li>
-                            </ul>
-                            <p class="desc">"훈련 중에 딴짓하지 마라. ...저게 마법? 그냥 기공 아닌가?"</p>
+                        <div class="card-visual" style="background-image: url('images/남궁서현_normal.jpg');"></div>
+                        <div class="card-info-wuxia">
+                            <div class="wuxia-name">남궁서현</div>
+                            <div class="wuxia-mbti">INTJ / 1w9</div>
+                            <div class="wuxia-quote">"교육은 군역이 아닙니다. 규정을 준수하십시오."</div>
                         </div>
                     </div>
                 </div>
             </article>
-
+            
+            <!-- [윤혁진] (교관) -->
+            <article class="char-card" data-gender="male" data-role="instructor" data-contract="none">
+                <div class="card-inner no-flip">
+                    <div class="card-front">
+                        <div class="card-visual" style="background-image: url('images/윤혁진_normal.jpg');"></div>
+                        <div class="card-info-wuxia">
+                            <div class="wuxia-name">윤혁진</div>
+                            <div class="wuxia-mbti">ESTJ / 8w7</div>
+                            <div class="wuxia-quote">"시간 엄수. 대련은 짧게. 변명은 필요 없다."</div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+            
+            <!-- [진소연] -->
+            <article class="char-card" data-gender="female" data-role="student" data-contract="evil">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <div class="card-visual" style="background-image: url('images/진소연_normal.jpg');"></div>
+                        <div class="card-info-wuxia">
+                            <div class="wuxia-name">진소연</div>
+                            <div class="wuxia-mbti">ENTJ / 3w4</div>
+                            <div class="wuxia-quote">"악(惡) 또한 필요에 의한 것. 내 선택에 후회는 없다."</div>
+                        </div>
+                    </div>
+                    <div class="card-back" style="background-image: url('images/진소연_magic.jpg');">
+                        <!-- 악계약은 빨간 도장 -->
+                        <div class="old-stamp evil">惡</div>
+                    </div>
+                </div>
+            </article>
+            
+            <!-- [하연지] -->
+            <article class="char-card" data-gender="female" data-role="student" data-contract="good">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <div class="card-visual" style="background-image: url('images/하연지_normal.jpg');"></div>
+                        <div class="card-info-wuxia">
+                            <div class="wuxia-name">하연지</div>
+                            <div class="wuxia-mbti">ENFJ / 2w3</div>
+                            <div class="wuxia-quote">"우리가 함께라면 더 큰 의미를 찾을 수 있을 거야."</div>
+                        </div>
+                    </div>
+                    <div class="card-back" style="background-image: url('images/하연지_magic.jpg');">
+                        <div class="old-stamp good">善</div>
+                    </div>
+                </div>
+            </article>
         </section>
     </main>
 
