@@ -107,26 +107,36 @@ function createStarDust(cardElement) {
 
 /* --- [스크롤 등장 애니메이션 & 필터링] --- */
 
-// 1. 등장 애니메이션 감지기 (Intersection Observer)
-const observerOptions = {
-    root: null, // 뷰포트 기준
-    rootMargin: '0px',
-    threshold: 0.1 // 10%만 보여도 작동
-};
+/* --- [슬라이더 포커스 연출] --- */
+const container = document.querySelector('.char-list-container');
+const cards = document.querySelectorAll('.char-card');
 
-const observer = new IntersectionObserver((entries) => {
+// Intersection Observer: 화면 중앙에 온 녀석을 감지
+const focusObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            entry.target.classList.add('show'); // 화면에 들어오면 show 클래스 추가
+            entry.target.classList.add('active');
+        } else {
+            entry.target.classList.remove('active');
+            // 포커스 나가면 카드 뒤집힌 거 원상복구 (옵션)
+            entry.target.classList.remove('flipped'); 
         }
     });
-}, observerOptions);
-
-// 초기 로드 시 모든 카드에 관찰자 부착
-document.querySelectorAll('.char-card').forEach(card => {
-    observer.observe(card);
+}, {
+    root: container, // 컨테이너 기준
+    threshold: 0.6 // 60% 이상 보여야 활성화
 });
 
+// 모든 카드 관찰 시작
+cards.forEach(card => focusObserver.observe(card));
+
+// 필터링 후에는 스크롤을 맨 처음으로 돌려주는 센스
+function resetScroll() {
+    container.scrollTop = 0;
+    container.scrollLeft = 0;
+}
+
+// (기존 filterCards 함수 마지막에 resetScroll() 호출 추가해주세요)
 
 // 2. 필터링 로직 수정 (애니메이션 재설정 포함)
 const checkboxes = document.querySelectorAll('.filter-btn input[type="checkbox"]');
