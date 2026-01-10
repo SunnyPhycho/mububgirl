@@ -1296,3 +1296,16 @@ ul { list-style: none; }
         font-size: 1.5rem;
     }
 }
+/* 소속 필터 색상 (무협 테마) */
+.filter-btn.faction-jeongpa input:checked + span {
+    background: #2980b9; border-color: #2980b9; box-shadow: 0 0 10px #2980b9; /* 청색 */
+}
+.filter-btn.faction-sapa input:checked + span {
+    background: #27ae60; border-color: #27ae60; box-shadow: 0 0 10px #27ae60; /* 녹색 */
+}
+.filter-btn.faction-magyo input:checked + span {
+    background: #800000; border-color: #800000; box-shadow: 0 0 10px #800000; /* 검붉은색 */
+}
+.filter-btn.faction-etc input:checked + span {
+    background: #7f8c8d; border-color: #7f8c8d; box-shadow: 0 0 10px #7f8c8d; /* 회색 */
+}
