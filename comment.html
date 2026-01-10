@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제작자의 말 - 무림에서 마법소녀라니, 무리무리!</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Hi+Melody&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- 헤더 (공통) -->
+    <header id="main-header">
+        <div class="header-container">
+            <button id="mobile-menu-btn" class="menu-icon mobile-only"><span></span><span></span><span></span></button>
+            <div class="title-area">
+                <h1 class="main-title"><a href="index.html">무림에서 마법소녀라니, <span class="magical-text">무리무리!</span></a></h1>
+            </div>
+            <div id="desktop-menu-wrapper" class="desktop-only">
+                <button id="desktop-menu-btn" class="menu-icon"><span></span><span></span><span></span></button>
+                <nav class="desktop-nav">
+                    <ul>
+                        <li><a href="world.html" class="magical-link">세계관 (World)</a></li>
+                        <li><a href="char.html" class="magical-link">등장인물 (Char)</a></li>
+                        <li><a href="comment.html" class="magical-link">제작자의 말 (Comment)</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <nav id="mobile-nav-overlay">
+        <ul>
+            <li><a href="world.html" class="magical-link-mobile">세계관</a></li>
+            <li><a href="char.html" class="magical-link-mobile">캐릭터</a></li>
+            <li><a href="comment.html" class="magical-link-mobile">제작자의 말</a></li>
+        </ul>
+    </nav>
+
+    <!-- [코멘트 콘텐츠 영역] -->
+    <main class="content-wrapper comment-wrapper">
+        
+        <!-- 글 제목 -->
+        <h2 class="comment-title">
+            <!-- [TODO] 여기에 제목을 입력하세요 -->
+            제작자의 말: 왜 하필 무협과 마법소녀인가?
+        </h2>
+
+        <!-- 작성일/작성자 -->
+        <div class="comment-meta">
+            <!-- [TODO] 날짜 수정 -->
+            <span>2024. 05. 20</span> · <span>제작자</span>
+        </div>
+
+        <!-- 본문 (에세이 스타일) -->
+        <article class="comment-body">
+            
+            <!-- [TODO] 아래 p 태그 안에 내용을 자유롭게 적으세요. -->
+            <!-- 문단은 <p>내용</p> 로 감싸면 됩니다. -->
+            
+            <p>
+                안녕하세요. 이 시뮬레이션의 제작자입니다.<br>
+                처음 이 기획을 떠올린 건 단순한 의문에서 시작되었습니다.
+            </p>
+
+            <p>
+                "무림의 기공과 마법소녀의 마력은 사실 같은 게 아닐까?"<br>
+                라는 엉뚱한 상상이, 이렇게 거대한 세계관으로 확장될 줄은 몰랐습니다.
+            </p>
+
+            <!-- 강조하고 싶은 문구는 strong 태그 -->
+            <p>
+                이 세계는 겉으로는 <strong>'라이트하고 웃긴 병맛 개그물'</strong>을 지향합니다.<br>
+                하지만 깊이 파고들수록, 시스템의 부조리와 인간 군상의 드라마를 발견하게 될 것입니다.
+            </p>
+
+            <!-- 구분선 -->
+            <hr class="comment-divider">
+
+            <h3>1. 기획 의도에 관하여</h3>
+            <p>
+                (여기에 기획 의도 내용을 적으세요...)
+            </p>
+
+            <h3>2. 플레이 팁</h3>
+            <p>
+                (여기에 팁을 적으세요...)
+            </p>
+            
+            <!-- 마지막 인사 -->
+            <p class="closing">
+                즐거운 관측 되시길 바랍니다.
+            </p>
+
+        </article>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
