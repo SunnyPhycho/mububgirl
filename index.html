@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>무림에서 마법소녀라니, 무리무리!</title>
+    <!-- 폰트: 무협 느낌(명조)과 마법소녀 느낌(고딕/귀여운)을 위해 구글 폰트 로드 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Hi+Melody&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- [헤더 영역] 메뉴와 제목이 포함된 상단 바 -->
+    <header id="main-header">
+        <div class="header-container">
+            <!-- 모바일용 메뉴 버튼 (좌측 상단) -->
+            <button id="mobile-menu-btn" class="menu-icon mobile-only" aria-label="메뉴 열기">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <!-- 사이트 제목 (데스크탑에서는 이 박스가 확장됨) -->
+            <div class="title-area">
+                <h1 class="main-title">무림에서 마법소녀라니, <span class="magical-text">무리무리!</span></h1>
+                <p class="sub-title">※무리가 아니었다?!</p>
+            </div>
+
+            <!-- 데스크탑용 메뉴 버튼 (우측 상단, 호버 트리거용) -->
+            <div id="desktop-menu-wrapper" class="desktop-only">
+                <button id="desktop-menu-btn" class="menu-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <!-- 데스크탑 확장 메뉴 (호버시 나타남) -->
+                <nav class="desktop-nav">
+                    <ul>
+                        <!-- 마법소녀풍 장식 클래스: magical-link -->
+                        <li><a href="/world" class="magical-link">세계관 (World)</a></li>
+                        <li><a href="/char" class="magical-link">등장인물 (Char)</a></li>
+                        <li><a href="/comment" class="magical-link">제작자의 말 (Comment)</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- 모바일용 풀스크린 메뉴 오버레이 -->
+    <nav id="mobile-nav-overlay">
+        <ul>
+            <li><a href="/world" class="magical-link-mobile">세계관</a></li>
+            <li><a href="/char" class="magical-link-mobile">캐릭터</a></li>
+            <li><a href="/comment" class="magical-link-mobile">제작자의 말</a></li>
+        </ul>
+    </nav>
+
+    <!-- [메인 콘텐츠 영역] -->
+    <main class="content-wrapper">
+        <!-- 이미지 입력란 (사용자가 나중에 이미지를 넣을 곳) -->
+        <div class="hero-image-container">
+            <!-- 
+                [TODO] 여기에 나중에 <img> 태그를 넣거나 background-image를 설정하세요. 
+                현재는 빈 박스로 표시됩니다.
+            -->
+            <div class="image-placeholder">
+                <p>메인 이미지 영역<br>(Coming Soon)</p>
+            </div>
+        </div>
+
+        <!-- 간단한 소개 텍스트 -->
+        <section class="intro-text">
+            <h2>무협 × 마법소녀 × 인외 세력전</h2>
+            <p>의무교육으로 무공을 배우는 학관,</p>
+            <p>하지만 나는 <span class="highlight">변신</span>해서 싸운다?</p>
+            <br>
+            <p class="scary-text">...그리고 그 깊은 곳에는 심연이 있다.</p>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
