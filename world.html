@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>세계관 - 무림에서 마법소녀라니, 무리무리!</title>
+    <!-- 폰트 로드 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Hi+Melody&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- [헤더 영역] (Index와 동일 구조) -->
+    <header id="main-header">
+        <div class="header-container">
+            <button id="mobile-menu-btn" class="menu-icon mobile-only">
+                <span></span><span></span><span></span>
+            </button>
+            <div class="title-area">
+                <h1 class="main-title"><a href="index.html">무림에서 마법소녀라니, <span class="magical-text">무리무리!</span></a></h1>
+            </div>
+            <div id="desktop-menu-wrapper" class="desktop-only">
+                <button id="desktop-menu-btn" class="menu-icon">
+                    <span></span><span></span><span></span>
+                </button>
+                <nav class="desktop-nav">
+                    <ul>
+                        <li><a href="world.html" class="magical-link">세계관 (World)</a></li>
+                        <li><a href="char.html" class="magical-link">등장인물 (Char)</a></li>
+                        <li><a href="comment.html" class="magical-link">제작자의 말 (Comment)</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <nav id="mobile-nav-overlay">
+        <ul>
+            <li><a href="world.html" class="magical-link-mobile">세계관</a></li>
+            <li><a href="char.html" class="magical-link-mobile">캐릭터</a></li>
+            <li><a href="comment.html" class="magical-link-mobile">제작자의 말</a></li>
+        </ul>
+    </nav>
+
+    <!-- [세계관 콘텐츠 영역] -->
+    <main class="content-wrapper world-content">
+        
+        <!-- 1. 개요 섹션 -->
+        <section class="world-section">
+            <h2 class="section-title">무협(武俠)과 이변(異變)</h2>
+            <div class="text-box wuxia-style">
+                <p>무맹(武盟)과 황실의 합의 하에 설립된 <strong>'의무교육(義敎)'</strong> 기관, 학관(學館).</p>
+                <p>겉으로는 청년 무인들의 소양을 기르는 평범한 교육 시설이지만,<br>
+                그 이면에는 <strong>차원을 넘어 간섭해오는 두 세력, [선]과 [악]</strong>이 존재합니다.</p>
+                <br>
+                <p>학관은 이들의 대리전이 벌어지는 무대이자,<br>
+                세계의 균형을 유지하기 위한 거대한 제방입니다.</p>
+            </div>
+        </section>
+
+        <!-- 2. 연혁(TL) 섹션: T0~T12를 역사 기록처럼 각색 -->
+        <section class="world-section">
+            <h2 class="section-title">비망록: 정사(正史) 요약</h2>
+            <ul class="timeline">
+                <li class="timeline-item">
+                    <span class="time-label">구세계(前)</span>
+                    <div class="time-content">
+                        <strong>변신 대전과 붕괴</strong>
+                        <p>선과 악의 전면전 끝에 균형이 임계점을 넘어 세계가 붕괴함. <br>승리한 쪽도 패배한 쪽도 없이 공멸한다는 교훈을 남김.</p>
+                    </div>
+                </li>
+                <li class="timeline-item">
+                    <span class="time-label">접촉기</span>
+                    <div class="time-content">
+                        <strong>현계(現界) 관측과 접점</strong>
+                        <p>두 세력이 현재의 무림을 새로운 '전장'으로 선정.<br>마(魔)가 먼저 강자존의 논리로 접촉해왔으며, 이에 대응해 선(善) 또한 무맹을 통해 협력을 요청함.</p>
+                    </div>
+                </li>
+                <li class="timeline-item">
+                    <span class="time-label">설립기</span>
+                    <div class="time-content">
+                        <strong>의무교육(義敎)의 신설</strong>
+                        <p>무맹주와 황실의 합의 하에 '변신 가능 연령대'를 집결시키기 위한 명분으로 학관이 신설됨.<br>관무불침(官武不侵) 원칙 아래 황실은 터와 기록만을 제공.</p>
+                    </div>
+                </li>
+                <li class="timeline-item highlight-item">
+                    <span class="time-label">현재</span>
+                    <div class="time-content">
+                        <strong>학관의 일상과 비일상</strong>
+                        <p>평시에는 교육과 생활이 이어지나, 간헐적으로 '사건'이라 불리는 전투가 발생.<br>승패는 죽음이 아닌 <strong>'변신 해제'</strong>로 결정되며, 해제된 자는 일정 기간 재변신이 불가능하다.</p>
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <!-- 3. 설정 상세 (변신/계약) -->
+        <section class="world-section">
+            <h2 class="section-title"><span class="magical-font">변신(變身)</span> 가이드</h2>
+            
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>계약(Contract)</h3>
+                    <p>학관의 재적생은 세 부류로 나뉩니다.</p>
+                    <ul>
+                        <li><span class="dot good"></span><strong>선계(善契):</strong> 수호, 질서, 혹은 그럴싸한 명분.</li>
+                        <li><span class="dot evil"></span><strong>악계(惡契):</strong> 욕망, 자유, 혹은 파괴적 충동.</li>
+                        <li><span class="dot none"></span><strong>미계(未契):</strong> 아직 선택하지 않았거나, 휘말린 자.</li>
+                    </ul>
+                    <p class="caption">※ 교내 규정상 계약 성향에 따른 적대 의무는 없습니다.</p>
+                </div>
+
+                <div class="info-card">
+                    <h3>4대 요소</h3>
+                    <p>변신 시 다음 4가지가 강제로 부여됩니다.</p>
+                    <ol>
+                        <li><strong>변구(變具):</strong> 매개체 (부적, 브로치, 옥패 등)</li>
+                        <li><strong>호호(呼號):</strong> 쪽팔림을 감수한 짧은 구호</li>
+                        <li><strong>상징(象徵):</strong> 고유한 테마 색상과 문양</li>
+                        <li><strong>명의(名義):</strong> 사회적 체면을 가리기 위한 코드네임</li>
+                    </ol>
+                </div>
+            </div>
+            
+            <div class="warning-box">
+                <p><strong>주의:</strong><br>전투 중의 기술명 외치기나 화려한 연출은 <br>'과장된 형식미'로서 시스템적으로 보정됩니다.<br>(본인이 원해서 하는 게 아닐 수도 있습니다.)</p>
+            </div>
+        </section>
+
+    </main>
+    
+    <script src="script.js"></script>
+</body>
+</html>
