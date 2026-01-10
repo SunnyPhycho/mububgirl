@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>등장인물 - 무림 학관</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Hi+Melody&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <!-- 헤더 (공통) -->
+    <header id="main-header">
+        <div class="header-container">
+            <button id="mobile-menu-btn" class="menu-icon mobile-only"><span></span><span></span><span></span></button>
+            <div class="title-area">
+                <h1 class="main-title"><a href="index.html">무림에서 마법소녀라니, <span class="magical-text">무리무리!</span></a></h1>
+            </div>
+            <div id="desktop-menu-wrapper" class="desktop-only">
+                <button id="desktop-menu-btn" class="menu-icon"><span></span><span></span><span></span></button>
+                <nav class="desktop-nav">
+                    <ul>
+                        <li><a href="world.html" class="magical-link">세계관 (World)</a></li>
+                        <li><a href="char.html" class="magical-link">등장인물 (Char)</a></li>
+                        <li><a href="comment.html" class="magical-link">제작자의 말 (Comment)</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <nav id="mobile-nav-overlay">
+        <ul>
+            <li><a href="world.html" class="magical-link-mobile">세계관</a></li>
+            <li><a href="char.html" class="magical-link-mobile">캐릭터</a></li>
+            <li><a href="comment.html" class="magical-link-mobile">제작자의 말</a></li>
+        </ul>
+    </nav>
+
+    <!-- [캐릭터 페이지 컨테이너] -->
+    <main class="char-wrapper">
+        
+        <!-- 1. 필터 / 검색 패널 -->
+        <section class="filter-panel">
+            <h2 class="filter-title">재적생/교관 검색 (Search)</h2>
+            <div class="filter-groups">
+                
+                <!-- 성별 필터 -->
+                <div class="filter-group">
+                    <span class="label">성별:</span>
+                    <label><input type="checkbox" name="gender" value="male" checked> 남</label>
+                    <label><input type="checkbox" name="gender" value="female" checked> 여</label>
+                </div>
+
+                <!-- 신분 필터 -->
+                <div class="filter-group">
+                    <span class="label">신분:</span>
+                    <label><input type="checkbox" name="role" value="student" checked> 학생</label>
+                    <label><input type="checkbox" name="role" value="instructor" checked> 교관</label>
+                </div>
+
+                <!-- 계약 상태 필터 -->
+                <div class="filter-group">
+                    <span class="label">계약:</span>
+                    <label><input type="checkbox" name="contract" value="good" checked> 선(善)</label>
+                    <label><input type="checkbox" name="contract" value="evil" checked> 악(惡)</label>
+                    <label><input type="checkbox" name="contract" value="none" checked> 미계약</label>
+                </div>
+
+                <!-- [확장용 주석] 
+                     나중에 '파벌(정파/사파/마교)'이나 '학년' 같은 필터가 필요하면 
+                     여기에 .filter-group div를 복사해서 추가하고
+                     checkbox name을 'faction' 등으로 설정하면 됨.
+                -->
+            </div>
+        </section>
+
+        <!-- 2. 캐릭터 카드 리스트 영역 -->
+        <section id="char-list" class="char-list-container">
+            
+            <!-- [샘플 카드 1: 변신 가능 캐릭터] -->
+            <!-- data- 속성에 필터링용 정보를 넣습니다. -->
+            <article class="char-card" data-gender="female" data-role="student" data-contract="good">
+                <div class="card-inner">
+                    
+                    <!-- 앞면 (Normal) -->
+                    <div class="card-front">
+                        <div class="card-header">
+                            <span class="badge good">善契</span>
+                            <span class="name">남궁하린</span>
+                        </div>
+                        <div class="card-body">
+                            <!-- 나중에 이미지 들어갈 자리 -->
+                            <div class="char-img-placeholder">Image</div>
+                            <ul class="stats">
+                                <li><strong>소속:</strong> 정파 / 학생</li>
+                                <li><strong>나이:</strong> 19세</li>
+                                <li><strong>성격:</strong> S (주도적)</li>
+                            </ul>
+                            <p class="desc">"뭐? 마법소녀? 웃기지 마! 난 남궁세가의... 꺄악! 이거 치마가 왜 이래!"</p>
+                        </div>
+                        <div class="click-hint">Click to Transform ↻</div>
+                    </div>
+
+                    <!-- 뒷면 (Transformed) -->
+                    <div class="card-back good-theme"> <!-- 테마색 클래스 -->
+                        <div class="card-header">
+                            <span class="badge transform">變身</span>
+                            <span class="name">샤이닝 소드 하린</span>
+                        </div>
+                        <div class="card-body">
+                            <div class="char-img-placeholder transform-img">Transform Image</div>
+                            <ul class="stats">
+                                <li><strong>호호:</strong> "악을 베는 은빛 섬광!"</li>
+                                <li><strong>상징:</strong> 은색 / 검기(劍氣)</li>
+                                <li><strong>변구:</strong> 머리핀 (검 모양)</li>
+                            </ul>
+                            <p class="desc">검강을 날리는 마법소녀(?). 본인은 무공이라고 우기지만, 시스템상 빔 병기 판정이다.</p>
+                        </div>
+                        <div class="click-hint">Click to Return ↻</div>
+                    </div>
+
+                </div>
+            </article>
+
+            <!-- [샘플 카드 2: 변신 불가/미계약 캐릭터 (뒷면 없음 예시)] -->
+             <article class="char-card" data-gender="male" data-role="instructor" data-contract="none">
+                <div class="card-inner no-flip"> <!-- no-flip 클래스 추가 -->
+                    <div class="card-front">
+                        <div class="card-header">
+                            <span class="badge none">敎官</span>
+                            <span class="name">윤혁진</span>
+                        </div>
+                        <div class="card-body">
+                            <div class="char-img-placeholder">Image</div>
+                            <ul class="stats">
+                                <li><strong>소속:</strong> 교관 / 무계약</li>
+                                <li><strong>나이:</strong> 31세</li>
+                            </ul>
+                            <p class="desc">"훈련 중에 딴짓하지 마라. ...저게 마법? 그냥 기공 아닌가?"</p>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
