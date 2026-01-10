@@ -28,3 +28,60 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+/* --- [캐릭터 페이지 기능: 필터 & 플립] --- */
+
+// 1. 카드 뒤집기 (Flip)
+const cards = document.querySelectorAll('.char-card');
+
+cards.forEach(card => {
+    card.addEventListener('click', () => {
+        const inner = card.querySelector('.card-inner');
+        // 'no-flip' 클래스가 없는 경우에만 뒤집기 동작
+        if (inner && !inner.classList.contains('no-flip')) {
+            card.classList.toggle('flipped');
+        }
+    });
+});
+
+// 2. 필터링 (Filtering)
+const checkboxes = document.querySelectorAll('.filter-group input[type="checkbox"]');
+const charCards = document.querySelectorAll('.char-card');
+
+function filterCards() {
+    // 현재 체크된 값들을 수집
+    const checkedValues = {
+        gender: [],
+        role: [],
+        contract: []
+    };
+
+    checkboxes.forEach(box => {
+        if (box.checked) {
+            checkedValues[box.name].push(box.value);
+        }
+    });
+
+    // 모든 카드 순회하며 검사
+    charCards.forEach(card => {
+        const gender = card.getAttribute('data-gender');
+        const role = card.getAttribute('data-role');
+        const contract = card.getAttribute('data-contract');
+
+        // 3가지 조건(성별, 신분, 계약) 중 하나라도 체크 리스트에 없으면 숨김
+        const matchGender = checkedValues.gender.includes(gender);
+        const matchRole = checkedValues.role.includes(role);
+        const matchContract = checkedValues.contract.includes(contract);
+
+        if (matchGender && matchRole && matchContract) {
+            card.style.display = 'block'; // 혹은 flex
+        } else {
+            card.style.display = 'none';
+        }
+    });
+}
+
+// 체크박스 변경 시마다 필터 함수 실행
+checkboxes.forEach(box => {
+    box.addEventListener('change', filterCards);
+});
