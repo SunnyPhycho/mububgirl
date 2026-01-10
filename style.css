@@ -1038,7 +1038,7 @@ ul { list-style: none; }
 
 .wuxia-quote {
     font-style: italic;
-    font-size: 1.15rem; /* 폰트 대폭 키움 */
+    font-size: 2.15rem; /* 폰트 대폭 키움 */
     line-height: 1.4;
     color: #3e2723;
     font-weight: 600;
@@ -1192,7 +1192,7 @@ ul { list-style: none; }
 
     .wuxia-quote {
         width: 100%;
-        font-size: 1rem; /* 모바일에 맞게 조정 */
+        font-size: 1.5rem; /* 모바일에 맞게 조정 */
         text-align: center;
         background: rgba(255, 255, 255, 0.4); /* 배경 연하게 */
         border-radius: 10px;
