@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>세계관 - 무림에서 마법소녀라니, 무리무리!</title>
-    <!-- 폰트 로드 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Hi+Melody&display=swap" rel="stylesheet">
@@ -22,9 +21,6 @@
                 <h1 class="main-title"><a href="index.html">무림에서 마법소녀라니, <span class="magical-text">무리무리!</span></a></h1>
             </div>
             <div id="desktop-menu-wrapper" class="desktop-only">
-                <button id="desktop-menu-btn" class="menu-icon">
-                    <span></span><span></span><span></span>
-                </button>
                 <nav class="desktop-nav">
                     <ul>
                         <li><a href="world.html" class="magical-link">세계관 (World)</a></li>
@@ -36,124 +32,95 @@
         </div>
     </header>
 
-    <nav id="mobile-nav-overlay">
-        <ul>
-            <li><a href="world.html" class="magical-link-mobile">세계관</a></li>
-            <li><a href="char.html" class="magical-link-mobile">캐릭터</a></li>
-            <li><a href="comment.html" class="magical-link-mobile">제작자의 말</a></li>
-        </ul>
-    </nav>
-
-    <!-- [세계관 콘텐츠 영역] -->
     <main class="content-wrapper world-content">
         
-        <!-- 1. 개요 섹션: L1 태그 기반 -->
+        <!-- 1. 인트로: 핵심 컨셉만 전달 -->
         <section class="world-section">
-            <h2 class="section-title">개요: 무협(武俠)과 이변(異變)</h2>
+            <h2 class="section-title">무림(武林) × 마법소녀</h2>
             <div class="paper-scroll">
                 <p class="intro-quote">
-                    "강호는 <strong>선(善)과 악(惡)</strong>, 두 외차원 세력의 대리 전장이다.<br>
-                    허나 이곳에서의 투쟁은 정복이 아닌 <strong>'공존(共存)'</strong>을 위한 균형 맞추기다."
+                    "강호의 도리는 땅에 떨어졌다.<br>
+                    이제는 <strong>[계약]</strong>과 <strong>[변신]</strong>의 시대다!"
                 </p>
                 <div class="divider"></div>
-                <p>
-                    학관(學館)은 단순한 교육 기관이 아닙니다.<br>
-                    이곳은 특정 연령대를 집결시켜 <strong>[선]과 [악]의 대리 충돌</strong>을 관리하는 거대한 사회적 장치입니다.<br>
-                    학생들은 자신의 의지에 따라 <strong>계약(契約)</strong>을 맺고 비일상의 힘을 휘두르나,<br>
-                    그 끝은 상대의 파멸이 아닌, 세계의 유지를 목적으로 합니다.
+                <p style="text-align: center; line-height: 1.8;">
+                    이곳 <strong>'학관(學館)'</strong>은 단순한 학교가 아닙니다.<br>
+                    세계 멸망을 막기 위해, 혈기 넘치는 청춘들을 모아둔 거대한 <strong>'대리 전장'</strong>입니다.<br>
+                    <br>
+                    선(善)을 위한 <strong>협행</strong>이냐, 욕망을 위한 <strong>패도</strong>냐.<br>
+                    당신의 선택이 곧 당신의 '힘'이 됩니다.
                 </p>
             </div>
         </section>
 
-        <!-- 2. 정사(正史) 타임라인: T0~T12 기반 -->
+        <!-- 2. 역사: 지루한 연표 대신 '왜 싸우는지'만 요약 -->
         <section class="world-section">
-            <h2 class="section-title">비망록: 정사(正史)</h2>
+            <h2 class="section-title">비망록: 3줄 요약</h2>
             <div class="paper-scroll">
                 <ul class="timeline">
-                    <!-- T0: 구세계 (직접 강림X -> 변신대전이었음) -->
                     <li class="timeline-item">
-                        <span class="time-label">구세계(前)</span>
+                        <span class="time-label">과거</span>
                         <div class="time-content">
-                            <strong>변신 대전(變身大戰)과 붕괴</strong>
-                            <p>과거의 세계에서도 대리전은 존재했다.<br>
-                            허나 악(惡)의 점유율이 임계점을 넘어 '완전 우위'를 점하자 균형이 깨져버렸고,<br>
-                            결국 승자도 패자도 없이 세계 자체가 붕괴하며 <strong>공멸(共滅)</strong>하였다.</p>
+                            <strong>"진심으로 싸우면 다 죽는다."</strong>
+                            <p>옛날에 선과 악이 진짜로 맞붙었다가 세계가 한 번 박살났습니다.<br>
+                            그래서 놈들은 깨달았죠. <strong>"적당히 인간을 시켜서 대신 싸우게 하자."</strong></p>
                         </div>
                     </li>
-                    <!-- T1~T5: 접촉기 -->
                     <li class="timeline-item">
-                        <span class="time-label">접촉기</span>
+                        <span class="time-label">설립</span>
                         <div class="time-content">
-                            <strong>새로운 전장, 무림(武林)</strong>
-                            <p>그들은 현재의 무림을 새로운 판으로 짰다.<br>
-                            <strong>마(魔)</strong>가 먼저 강자존의 논리로 '악계(惡契)'를 퍼뜨리기 시작했고,<br>
-                            이에 대응해 <strong>선(善)</strong> 또한 무맹에 접촉하여 협력을 구했다.</p>
+                            <strong>"청년들을 한곳에 가둬라."</strong>
+                            <p>무맹과 황실이 합심하여 <strong>'의무교육'</strong>이라는 핑계로 학관을 세웠습니다.<br>
+                            변신 가능한 나이대의 사고뭉치들을 한곳에 몰아넣고 관리하기 위해서요.</p>
                         </div>
                     </li>
-                    <!-- T9~T11: 설립기 -->
-                    <li class="timeline-item">
-                        <span class="time-label">설립기</span>
-                        <div class="time-content">
-                            <strong>의무교육(義敎)의 신설</strong>
-                            <p>무맹주와 황실의 합의 하에 <strong>'변신 가능 연령대 집결'</strong>을 명분으로 학관이 설립되었다.<br>
-                            황실은 <strong>관무불침(官武不侵)</strong> 원칙 하에 터와 기록만을 제공하며, 직접 운영은 무맹이 맡는다.</p>
-                        </div>
-                    </li>
-                    <!-- T12: 현재 -->
                     <li class="timeline-item highlight-item">
-                        <span class="time-label">현황(現)</span>
+                        <span class="time-label">현재</span>
                         <div class="time-content">
-                            <strong>균형의 유지</strong>
-                            <p>지난 실패를 되풀이하지 않기 위해, 이번 대리전은 철저히 통제된다.<br>
-                            평시에는 교육과 생활이 우선되며, 전투는 <strong>'변신 중에만 성립'</strong>한다.<br>
-                            승패는 죽음이 아닌 '변신 해제'로 결정된다.</p>
+                            <strong>"죽이지 말고, 쪽만 줘라."</strong>
+                            <p>이곳의 승패는 죽음이 아닙니다. 상대를 변신 불능 상태로 만드는 <strong>[해제]</strong>일 뿐.<br>
+                            하지만 변신이 풀린 채 바닥을 구르는 건, 죽는 것보다 더한 수치일지도 모릅니다.</p>
                         </div>
                     </li>
                 </ul>
             </div>
         </section>
 
-
-        <!-- 3. 변신 시스템: FX 태그 기반 -->
+        <!-- 3. 변신: 매뉴얼 대신 '감성'과 '경고' 위주 -->
         <section class="world-section">
-            <h2 class="section-title"><span class="magical-font">변신(變身)</span> 메커니즘</h2>
-            <p style="color:#aaa; margin-bottom:20px; text-align: center;">※ 시스템 출력: 필수 4요소 및 규칙</p>
+            <h2 class="section-title"><span class="magical-font">변신(變身)</span>의 대가</h2>
             
             <div class="magical-zone">
                 <div class="info-grid">
-                    
-                    <!-- 카드 1: 계약 형태 -->
+                    <!-- 카드 1: 선택지 -->
                     <div class="magical-card">
-                        <h3>재적생 분류 (Class)</h3>
-                        <p style="margin-bottom: 10px; font-size:0.9rem; color:#888;">입학 기준은 오직 '나이'이며, 계약은 강제되지 않는다.</p>
+                        <h3>당신의 소속은?</h3>
                         <ul class="contract-list">
-                            <li><span class="dot good"></span><strong>선계(善契):</strong> 수호와 질서</li>
-                            <li><span class="dot evil"></span><strong>악계(惡契):</strong> 욕망과 자유</li>
-                            <li><span class="dot none"></span><strong>미계(未契):</strong> 일반 학생 (관망)</li>
+                            <li><span class="dot good"></span><strong>선계(善契):</strong> 수호와 질서의 <br><span style="font-size:0.8rem; color:#888;">"정의로운 척하는 녀석들"</span></li>
+                            <li><span class="dot evil"></span><strong>악계(惡契):</strong> 욕망과 자유의 <br><span style="font-size:0.8rem; color:#888;">"지 하고 싶은 대로 사는 녀석들"</span></li>
+                            <li><span class="dot none"></span><strong>미계(未契):</strong> <br><span style="font-size:0.8rem; color:#888;">"아직 휘말리지 않은 일반인"</span></li>
                         </ul>
                     </div>
 
                     <!-- 카드 2: 4대 요소 -->
                     <div class="magical-card">
-                        <h3>변신 4대 요소</h3>
-                        <p style="margin-bottom: 10px; font-size:0.9rem; color:#888;">변신 시 <strong>'과장된 형식미'</strong>가 강제 출력된다.</p>
+                        <h3>변신의 4대 불가항력</h3>
+                        <p style="margin-bottom: 10px; font-size:0.9rem; color:#666;">피할 수 없습니다. 즐기세요.</p>
                         <ol>
-                            <li><strong>변구(變具):</strong> 힘을 담는 매개체 (부적, 장신구 등)</li>
-                            <li><strong>호호(呼號):</strong> 시동 구호 (※명령이 아닌 호출의 표식)</li>
-                            <li><strong>상징(象徵):</strong> 전신을 감싸는 빛과 테마</li>
-                            <li><strong>명의(名義):</strong> 활동용 이명(Code Name)</li>
+                            <li><strong>변구:</strong> 변신 도구를 손에 쥐어야 함.</li>
+                            <li><strong>호호:</strong> <span style="color:#e91e63;">기술명을 입 밖으로 외쳐야 함.</span></li>
+                            <li><strong>상징:</strong> 번쩍이는 빛과 배경 효과.</li>
+                            <li><strong>명의:</strong> 본명 대신 '쪽팔린 가명' 사용.</li>
                         </ol>
                     </div>
                 </div>
                 
-                <!-- 하단 경고문 -->
+                <!-- 하단 경고문: 유쾌하게 처리 -->
                 <div class="system-alert">
-                    <p>⚠ 전투 및 해제 규칙 ⚠</p>
-                    <div style="text-align: left; font-size: 0.9rem; margin-top: 10px; line-height: 1.6;">
-                        1. <strong>승패 조건:</strong> 상대의 변신을 강제로 푸는 <strong>'해제(解除)'</strong>로 결정된다.<br>
-                        2. <strong>사망 불간섭:</strong> 패배는 죽음과 연동되지 않으며, 단순 기력 고갈이다.<br>
-                        3. <strong>냉각기:</strong> 해제된 자는 안정을 취할 때까지 <strong>'일시 재변신 불가'</strong> 상태가 된다.
-                    </div>
+                    <p>⚠ 주의사항 ⚠</p>
+                    <p>배경에 꽃이 휘날리거나 BGM이 깔리는 것은<br>
+                    <strong>'시스템 강제 연출'</strong>입니다.<br>
+                    <span style="font-size: 0.8rem; opacity: 0.8;">(절대 본인의 취향이 아닙니다... 아마도.)</span></p>
                 </div>
             </div>
         </section>
