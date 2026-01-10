@@ -289,3 +289,46 @@ ul { list-style: none; }
     font-style: italic;
     margin-top: 20px;
 }
+
+/* --- [7. 텍스트 디테일 수정 (설정 반영)] --- */
+
+/* 무협 용어 강조 폰트 (진지함) */
+.wuxia-font {
+    font-family: var(--font-serif);
+    font-weight: 800;
+    color: #bdc3c7; /* 차가운 금속 느낌 */
+}
+
+/* 마법소녀 용어 강조 폰트 (키치함) */
+.magical-font {
+    font-family: var(--font-cute);
+    font-size: 1.2em;
+    color: var(--color-magic-pink);
+    text-shadow: 0 0 5px var(--color-magic-pink);
+}
+
+.lore-text {
+    margin-top: 20px;
+    line-height: 1.8;
+    color: #aaa;
+    font-size: 0.95rem;
+}
+
+.lore-text strong {
+    color: var(--color-wuxia-text);
+    border-bottom: 1px dashed var(--color-blood-red);
+}
+
+/* 구분선 */
+.divider {
+    width: 50px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--color-blood-red), transparent);
+    margin: 30px auto;
+}
+
+.hook-text {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #fff;
+}
