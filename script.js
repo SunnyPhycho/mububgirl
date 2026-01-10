@@ -81,14 +81,15 @@ document.addEventListener('DOMContentLoaded', () => {
         cards.forEach(card => entranceObserver.observe(card));
 
 
-        // 2-4. 필터링 로직
+        // 2-4. 필터링 로직 (소속 faction 추가됨)
         const checkboxes = document.querySelectorAll('.filter-btn input[type="checkbox"]');
 
         function filterCards() {
             const checkedValues = {
                 gender: [],
                 role: [],
-                contract: []
+                contract: [],
+                faction: [] // [추가] 소속 배열
             };
 
             checkboxes.forEach(box => {
@@ -101,36 +102,33 @@ document.addEventListener('DOMContentLoaded', () => {
                 const gender = card.getAttribute('data-gender');
                 const role = card.getAttribute('data-role');
                 const contract = card.getAttribute('data-contract');
+                const faction = card.getAttribute('data-faction'); // [추가] 속성 읽기
 
                 const matchGender = checkedValues.gender.includes(gender);
                 const matchRole = checkedValues.role.includes(role);
                 const matchContract = checkedValues.contract.includes(contract);
+                const matchFaction = checkedValues.faction.includes(faction); // [추가] 비교
 
-                if (matchGender && matchRole && matchContract) {
-                    // 조건 맞으면 보임
+                // 4가지 조건이 모두 맞아야 표시
+                if (matchGender && matchRole && matchContract && matchFaction) {
                     card.style.display = 'block'; 
                     
-                    // 애니메이션 리셋 (잠깐 껐다 켜기)
                     card.classList.remove('show');
                     setTimeout(() => {
                          entranceObserver.observe(card);
                     }, 50);
 
-                    // 포커스 옵저버도 다시 연결
                     focusObserver.observe(card);
 
                 } else {
-                    // 조건 안 맞으면 숨김
                     card.style.display = 'none';
                     card.classList.remove('active');
                     card.classList.remove('show');
                 }
             });
 
-            // 필터 적용 후 스크롤 맨 앞으로 이동
             resetScroll();
         }
-
         // 체크박스 변경 시 실행
         checkboxes.forEach(box => {
             box.addEventListener('change', filterCards);
