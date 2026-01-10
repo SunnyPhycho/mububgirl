@@ -49,41 +49,62 @@ cards.forEach(card => {
     });
 });
 
-// 별가루 생성 함수
+// [script.js 하단 createStarDust 함수 교체]
+
 function createStarDust(cardElement) {
-    const particleCount = 30; // 한 번에 터지는 입자 수
-    const colors = ['#ffb7d5', '#fff0f5', '#ffd700', '#ffffff']; // 핑크, 연핑크, 골드, 화이트
+    // 1. 입자 개수 대폭 증가 (30개 -> 60~80개)
+    const particleCount = 80; 
+    
+    // 2. 색상: 앞면/뒷면 테마에 맞춰 랜덤
+    const colors = ['#ffb7d5', '#fff0f5', '#ffd700', '#ffffff', '#8a1c1c']; 
+
+    // 카드의 중심 좌표 계산 (화면 기준)
+    const rect = cardElement.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
 
     for (let i = 0; i < particleCount; i++) {
         const particle = document.createElement('div');
         particle.classList.add('star-particle');
 
-        // 30% 확률로 별 모양, 나머지는 원형
-        if (Math.random() > 0.7) {
-            particle.classList.add('shape-star');
-        }
+        // 모양 랜덤 (별, 원, 다이아몬드)
+        const shapeType = Math.random();
+        if (shapeType > 0.6) particle.classList.add('shape-star');
+        else if (shapeType > 0.3) particle.classList.add('shape-diamond');
 
-        // 랜덤 변수 설정
-        const x = (Math.random() - 0.5) * 400; // X축 퍼짐 범위 (px)
-        const y = (Math.random() - 0.5) * 400; // Y축 퍼짐 범위 (px)
-        const size = Math.random() * 8 + 4; // 크기 4~12px
+        // 3. 폭발 범위 대폭 증가 (400px -> 800px 이상)
+        // Math.pow를 써서 중심엔 많이, 외곽엔 적게 퍼지도록 자연스럽게
+        const angle = Math.random() * Math.PI * 2;
+        const velocity = Math.random() * 600 + 200; // 날아가는 거리
+        
+        const tx = Math.cos(angle) * velocity;
+        const ty = Math.sin(angle) * velocity;
+
+        // 크기 다양화 (작은건 4px, 큰건 20px)
+        const size = Math.random() * 16 + 4; 
         const color = colors[Math.floor(Math.random() * colors.length)];
 
-        // CSS 변수로 주입
-        particle.style.setProperty('--tx', `${x}px`);
-        particle.style.setProperty('--ty', `${y}px`);
+        // CSS 변수 주입
+        particle.style.setProperty('--tx', `${tx}px`);
+        particle.style.setProperty('--ty', `${ty}px`);
         particle.style.setProperty('--size', `${size}px`);
         particle.style.setProperty('--color', color);
+        
+        // 회전 각도 랜덤
+        particle.style.setProperty('--rot', `${Math.random() * 720 - 360}deg`);
 
-        // 카드 안에 추가
-        cardElement.appendChild(particle);
+        // 입자를 body에 직접 붙임 (카드 밖으로 튀어나가게 하기 위함)
+        particle.style.left = `${centerX}px`;
+        particle.style.top = `${centerY}px`;
+        document.body.appendChild(particle);
 
-        // 애니메이션(0.8초) 끝나면 태그 삭제 (메모리 관리)
+        // 애니메이션 후 삭제
         setTimeout(() => {
             particle.remove();
-        }, 800);
+        }, 1000);
     }
 }
+
 // 2. 필터링 (Filtering)
 const checkboxes = document.querySelectorAll('.filter-group input[type="checkbox"]');
 const charCards = document.querySelectorAll('.char-card');
