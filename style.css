@@ -900,3 +900,39 @@ ul { list-style: none; }
     padding: 5px;
     opacity: 0.6;
 }
+
+/* --- [11. 별가루(Star Dust) 이펙트] --- */
+
+.star-particle {
+    position: absolute;
+    top: 50%;
+    left: 50%; /* 카드의 정중앙에서 시작 */
+    width: var(--size);
+    height: var(--size);
+    background-color: var(--color);
+    border-radius: 50%; /* 원형 입자 */
+    box-shadow: 0 0 10px var(--color), 0 0 20px #fff; /* 발광 효과 */
+    pointer-events: none; /* 클릭 방해 안 함 */
+    z-index: 9999; /* 카드보다 위에 표시 */
+    
+    /* 애니메이션 실행 후 사라짐 */
+    animation: explode-particles 0.8s ease-out forwards;
+}
+
+/* 별 모양 입자 (일부는 이걸로 변형 가능) */
+.star-particle.shape-star {
+    border-radius: 0;
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+}
+
+@keyframes explode-particles {
+    0% {
+        transform: translate(-50%, -50%) scale(0.5);
+        opacity: 1;
+    }
+    100% {
+        /* JS에서 계산한 랜덤 목적지(--tx, --ty)로 이동 */
+        transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty))) scale(0);
+        opacity: 0;
+    }
+}
