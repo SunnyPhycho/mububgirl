@@ -942,28 +942,33 @@ ul { list-style: none; }
 
 /* (컨테이너와 기본 틀 char-list-container, char-card 등은 기존 유지) */
 
-/* === [앞면: 무협 프로필] === */
+/* === [앞면: 무협 프로필 (수정됨)] === */
 .card-front {
     position: absolute;
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
     
-    /* 종이 질감 배경 */
-    background-color: #f0e6d2;
-    background-image: url("https://www.transparenttextures.com/patterns/aged-paper.png"); /* 종이 패턴 (예시) */
-    border: 6px solid #4a3b2a;
+    /* 1. 세계관 페이지의 그 '종이 질감' 적용 */
+    background-color: #f4e4bc;
+    background-image: 
+        linear-gradient(rgba(0,0,0,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,0,0,0.05) 1px, transparent 1px),
+        radial-gradient(#d3c092 15%, transparent 16%);
+    background-size: 20px 20px, 20px 20px, 5px 5px;
+    
+    border: 6px solid #4a3b2a; /* 짙은 나무색 테두리 */
     border-radius: 15px;
-    box-shadow: inset 0 0 30px rgba(93, 64, 55, 0.4);
+    box-shadow: inset 0 0 40px rgba(93, 64, 55, 0.3); /* 안쪽 그림자로 낡은 느낌 */
     
     display: flex;
     flex-direction: column;
     overflow: hidden;
 }
 
-/* 앞면 이미지 (상단 60% 차지) */
+/* 이미지 영역 (상단 65% - 좀 더 넓게 잡음) */
 .card-visual {
-    height: 60%;
+    height: 65%;
     background-color: #333;
     background-size: cover;
     background-position: top center;
@@ -971,41 +976,71 @@ ul { list-style: none; }
     position: relative;
 }
 
-/* 앞면 텍스트 정보 (하단 40%) */
+/* 텍스트 정보 영역 (하단 35% - 좌우 분할 레이아웃) */
 .card-info-wuxia {
-    height: 40%;
+    height: 35%;
     padding: 15px;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: space-between; /* 좌우 끝으로 벌림 */
+    align-items: flex-end; /* 바닥에 맞춤 */
     color: #3e2723;
     font-family: var(--font-serif);
-    text-align: center;
+    position: relative;
+}
+
+/* [좌측] 이름 및 스펙 정보 */
+.info-left {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    z-index: 2;
+    flex-shrink: 0; /*공간 줄어들지 않게 고정*/
 }
 
 .wuxia-name {
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     font-weight: 800;
-    margin-bottom: 5px;
+    line-height: 1;
     color: #2c1a16;
+    border-bottom: 3px solid #8a1c1c; /* 이름 밑줄 */
+    display: inline-block;
+    padding-bottom: 2px;
+}
+
+.wuxia-specs {
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: #5d4037;
 }
 
 .wuxia-mbti {
-    font-size: 0.9rem;
-    color: #8a1c1c; /* 붉은색 포인트 */
-    font-weight: bold;
-    margin-bottom: 10px;
-    letter-spacing: 1px;
+    font-size: 0.8rem;
+    color: #8a1c1c;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+/* [우측] 한 마디 (말풍선 느낌 없이 텍스트로만 밀기) */
+.info-right {
+    text-align: right;
+    max-width: 55%; /* 너무 길면 줄바꿈 */
+    margin-bottom: 2px;
+    z-index: 2;
 }
 
 .wuxia-quote {
     font-style: italic;
-    font-size: 0.95rem;
-    line-height: 1.4;
-    color: #5d4037;
-    background: rgba(0,0,0,0.05);
-    padding: 8px;
-    border-radius: 5px;
+    font-size: 0.9rem;
+    line-height: 1.3;
+    color: #4e342e;
+    font-weight: 600;
+    
+    /* 강조를 위해 약간의 배경 */
+    background: rgba(255, 255, 255, 0.3);
+    padding: 5px 8px;
+    border-radius: 8px 0 8px 0;
+    box-shadow: 2px 2px 0 rgba(0,0,0,0.1);
 }
 
 
