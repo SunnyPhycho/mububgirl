@@ -352,3 +352,153 @@ ul { list-style: none; }
     font-weight: bold;
     color: #fff;
 }
+
+/* --- [8. 세계관 페이지 (world.html) 전용 스타일] --- */
+
+.world-content {
+    max-width: 900px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.world-section {
+    margin-bottom: 60px;
+}
+
+.section-title {
+    font-size: 1.8rem;
+    border-left: 5px solid var(--color-blood-red);
+    padding-left: 15px;
+    margin-bottom: 25px;
+    color: var(--color-wuxia-text);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+/* 텍스트 박스 (무협풍 문서 느낌) */
+.text-box.wuxia-style {
+    background: rgba(20, 30, 25, 0.8);
+    border: 1px solid #3a5040;
+    padding: 20px;
+    border-radius: 5px;
+    line-height: 1.8;
+    color: #ccc;
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+}
+
+.text-box strong {
+    color: var(--color-magic-pink); /* 핵심 키워드는 이질적으로 */
+}
+
+/* 타임라인 스타일 */
+.timeline {
+    position: relative;
+    padding-left: 20px;
+    border-left: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 30px;
+    padding-left: 20px;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -26px; /* 선 위에 점 위치시키기 */
+    top: 5px;
+    width: 10px;
+    height: 10px;
+    background: var(--color-wuxia-text);
+    border-radius: 50%;
+    border: 2px solid var(--color-wuxia-bg);
+}
+
+.timeline-item.highlight-item::before {
+    background: var(--color-magic-pink);
+    box-shadow: 0 0 10px var(--color-magic-pink);
+}
+
+.time-label {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--color-blood-red);
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-family: var(--font-serif);
+}
+
+.time-content strong {
+    display: block;
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+    color: #fff;
+}
+
+.time-content p {
+    font-size: 0.9rem;
+    color: #aaa;
+    line-height: 1.6;
+}
+
+/* 정보 그리드 (카드형 배치) */
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+@media (min-width: 768px) {
+    .info-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.info-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 183, 213, 0.3); /* 연한 핑크 테두리 */
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.info-card h3 {
+    color: var(--color-magic-pink);
+    font-family: var(--font-cute);
+    margin-bottom: 15px;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.2);
+    padding-bottom: 5px;
+}
+
+.info-card ul li, .info-card ol li {
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+    color: #ddd;
+}
+
+.dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+.dot.good { background-color: #3498db; box-shadow: 0 0 5px #3498db;}
+.dot.evil { background-color: #e74c3c; box-shadow: 0 0 5px #e74c3c;}
+.dot.none { background-color: #95a5a6; }
+
+.caption {
+    font-size: 0.8rem;
+    color: #777;
+    margin-top: 10px;
+    font-style: italic;
+}
+
+/* 경고 박스 (코미디 포인트) */
+.warning-box {
+    margin-top: 20px;
+    background: rgba(255, 183, 213, 0.1);
+    border-left: 4px solid var(--color-magic-pink);
+    padding: 15px;
+    font-size: 0.9rem;
+    color: #ffdae9;
+}
