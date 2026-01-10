@@ -30,20 +30,60 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* --- [캐릭터 페이지 기능: 필터 & 플립] --- */
-
-// 1. 카드 뒤집기 (Flip)
+// 1. 카드 뒤집기 & 별가루 이펙트
 const cards = document.querySelectorAll('.char-card');
 
 cards.forEach(card => {
-    card.addEventListener('click', () => {
+    card.addEventListener('click', (e) => {
         const inner = card.querySelector('.card-inner');
-        // 'no-flip' 클래스가 없는 경우에만 뒤집기 동작
+        
+        // 뒤집기 불가능한 카드(no-flip)가 아닐 때만 실행
         if (inner && !inner.classList.contains('no-flip')) {
+            
+            // 1) 카드 뒤집기
             card.classList.toggle('flipped');
+
+            // 2) 별가루 뿌리기 (createStarDust 함수 호출)
+            createStarDust(card);
         }
     });
 });
 
+// 별가루 생성 함수
+function createStarDust(cardElement) {
+    const particleCount = 30; // 한 번에 터지는 입자 수
+    const colors = ['#ffb7d5', '#fff0f5', '#ffd700', '#ffffff']; // 핑크, 연핑크, 골드, 화이트
+
+    for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('star-particle');
+
+        // 30% 확률로 별 모양, 나머지는 원형
+        if (Math.random() > 0.7) {
+            particle.classList.add('shape-star');
+        }
+
+        // 랜덤 변수 설정
+        const x = (Math.random() - 0.5) * 400; // X축 퍼짐 범위 (px)
+        const y = (Math.random() - 0.5) * 400; // Y축 퍼짐 범위 (px)
+        const size = Math.random() * 8 + 4; // 크기 4~12px
+        const color = colors[Math.floor(Math.random() * colors.length)];
+
+        // CSS 변수로 주입
+        particle.style.setProperty('--tx', `${x}px`);
+        particle.style.setProperty('--ty', `${y}px`);
+        particle.style.setProperty('--size', `${size}px`);
+        particle.style.setProperty('--color', color);
+
+        // 카드 안에 추가
+        cardElement.appendChild(particle);
+
+        // 애니메이션(0.8초) 끝나면 태그 삭제 (메모리 관리)
+        setTimeout(() => {
+            particle.remove();
+        }, 800);
+    }
+}
 // 2. 필터링 (Filtering)
 const checkboxes = document.querySelectorAll('.filter-group input[type="checkbox"]');
 const charCards = document.querySelectorAll('.char-card');
