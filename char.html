@@ -1,327 +1,327 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>등장인물 - 무림 학관</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Hi+Melody&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>등장인물 - 무림 학관</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Hi+Melody&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
-    <!-- 헤더 (공통) -->
-    <header id="main-header">
-        <div class="header-container">
-            <button id="mobile-menu-btn" class="menu-icon mobile-only"><span></span><span></span><span></span></button>
-            <div class="title-area">
-                <h1 class="main-title"><a href="index.html">무림에서 마법소녀라니, <span class="magical-text">무리무리!</span></a></h1>
-            </div>
-            <div id="desktop-menu-wrapper" class="desktop-only">
-                <button id="desktop-menu-btn" class="menu-icon"><span></span><span></span><span></span></button>
-                <nav class="desktop-nav">
-                    <ul>
-                        <li><a href="world.html" class="magical-link">세계관 (World)</a></li>
-                        <li><a href="char.html" class="magical-link">등장인물 (Char)</a></li>
-                        <li><a href="comment.html" class="magical-link">제작자의 말 (Comment)</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-    </header>
-    <nav id="mobile-nav-overlay">
-        <ul>
-            <li><a href="world.html" class="magical-link-mobile">세계관</a></li>
-            <li><a href="char.html" class="magical-link-mobile">캐릭터</a></li>
-            <li><a href="comment.html" class="magical-link-mobile">제작자의 말</a></li>
-        </ul>
-    </nav>
 
-    <!-- [캐릭터 페이지 컨테이너] -->
-    <main class="char-wrapper">
-        
-        <!-- 1. 필터 / 검색 패널 -->
-        <section class="filter-panel">
-            <h2 class="filter-title">재적생 명부 열람</h2>
-            <div class="filter-groups">
-                
-                <!-- 성별 -->
-                <div class="filter-group">
-                    <span class="filter-label-text">성별</span>
-                    <label class="filter-btn">
-                        <input type="checkbox" name="gender" value="male" checked>
-                        <span>남</span>
-                    </label>
-                    <label class="filter-btn">
-                        <input type="checkbox" name="gender" value="female" checked>
-                        <span>여</span>
-                    </label>
-                </div>
+<!-- 헤더 (공통) -->
+<header id="main-header">
+<div class="header-container">
+<button id="mobile-menu-btn" class="menu-icon mobile-only"><span></span><span></span><span></span></button>
+<div class="title-area">
+<h1 class="main-title"><a href="index.html">무림에서 마법소녀라니, <span class="magical-text">무리무리!</span></a></h1>
+</div>
+<div id="desktop-menu-wrapper" class="desktop-only">
+<button id="desktop-menu-btn" class="menu-icon"><span></span><span></span><span></span></button>
+<nav class="desktop-nav">
+<ul>
+<li><a href="world.html" class="magical-link">세계관 (World)</a></li>
+<li><a href="char.html" class="magical-link">등장인물 (Char)</a></li>
+<li><a href="comment.html" class="magical-link">제작자의 말 (Comment)</a></li>
+</ul>
+</nav>
+</div>
+</div>
+</header>
+<nav id="mobile-nav-overlay">
+<ul>
+<li><a href="world.html" class="magical-link-mobile">세계관</a></li>
+<li><a href="char.html" class="magical-link-mobile">캐릭터</a></li>
+<li><a href="comment.html" class="magical-link-mobile">제작자의 말</a></li>
+</ul>
+</nav>
 
-                <!-- 신분 -->
-                <div class="filter-group">
-                    <span class="filter-label-text">신분</span>
-                    <label class="filter-btn">
-                        <input type="checkbox" name="role" value="student" checked>
-                        <span>학생</span>
-                    </label>
-                    <label class="filter-btn">
-                        <input type="checkbox" name="role" value="instructor" checked>
-                        <span>교관</span>
-                    </label>
-                </div>
+<!-- [캐릭터 페이지 컨테이너] -->
+<main class="char-wrapper">
 
-                <!-- 계약 (색상 클래스 추가됨) -->
-                <div class="filter-group">
-                    <span class="filter-label-text">계약</span>
-                    <label class="filter-btn contract-good">
-                        <input type="checkbox" name="contract" value="good" checked>
-                        <span>善</span>
-                    </label>
-                    <label class="filter-btn contract-evil">
-                        <input type="checkbox" name="contract" value="evil" checked>
-                        <span>惡</span>
-                    </label>
-                    <label class="filter-btn contract-none">
-                        <input type="checkbox" name="contract" value="none" checked>
-                        <span>未</span>
-                    </label>
-                </div>
+<!-- 1. 필터 / 검색 패널 -->
+<section class="filter-panel">
+<h2 class="filter-title">재적생 명부 열람</h2>
+<div class="filter-groups">
 
-                                <!-- [추가] 소속 (파벌) -->
-                <div class="filter-group">
-                    <span class="filter-label-text">소속</span>
-                    <label class="filter-btn faction-jeongpa">
-                        <input type="checkbox" name="faction" value="jeongpa" checked>
-                        <span>정파</span>
-                    </label>
-                    <label class="filter-btn faction-sapa">
-                        <input type="checkbox" name="faction" value="sapa" checked>
-                        <span>사파</span>
-                    </label>
-                    <label class="filter-btn faction-magyo">
-                        <input type="checkbox" name="faction" value="magyo" checked>
-                        <span>마교</span>
-                    </label>
-                    <label class="filter-btn faction-etc">
-                        <input type="checkbox" name="faction" value="etc" checked>
-                        <span>기타</span>
-                    </label>
-                </div>
-            </div>
-        </section>
-        
-        <!-- 2. 캐릭터 카드 리스트 영역 -->
-        <section id="char-list" class="char-list-container">
+<!-- 성별 -->
+<div class="filter-group">
+<span class="filter-label-text">성별</span>
+<label class="filter-btn">
+<input type="checkbox" name="gender" value="male" checked>
+<span>남</span>
+</label>
+<label class="filter-btn">
+<input type="checkbox" name="gender" value="female" checked>
+<span>여</span>
+</label>
+</div>
+
+<!-- 신분 -->
+<div class="filter-group">
+<span class="filter-label-text">신분</span>
+<label class="filter-btn">
+<input type="checkbox" name="role" value="student" checked>
+<span>학생</span>
+</label>
+<label class="filter-btn">
+<input type="checkbox" name="role" value="instructor" checked>
+<span>교관</span>
+</label>
+</div>
+
+<!-- 계약 (색상 클래스 추가됨) -->
+<div class="filter-group">
+<span class="filter-label-text">계약</span>
+<label class="filter-btn contract-good">
+<input type="checkbox" name="contract" value="good" checked>
+<span>善</span>
+</label>
+<label class="filter-btn contract-evil">
+<input type="checkbox" name="contract" value="evil" checked>
+<span>惡</span>
+</label>
+<label class="filter-btn contract-none">
+<input type="checkbox" name="contract" value="none" checked>
+<span>未</span>
+</label>
+</div>
+
+<!-- [추가] 소속 (파벌) -->
+<div class="filter-group">
+<span class="filter-label-text">소속</span>
+<label class="filter-btn faction-jeongpa">
+<input type="checkbox" name="faction" value="jeongpa" checked>
+<span>정파</span>
+</label>
+<label class="filter-btn faction-sapa">
+<input type="checkbox" name="faction" value="sapa" checked>
+<span>사파</span>
+</label>
+<label class="filter-btn faction-magyo">
+<input type="checkbox" name="faction" value="magyo" checked>
+<span>마교</span>
+</label>
+<label class="filter-btn faction-etc">
+<input type="checkbox" name="faction" value="etc" checked>
+<span>기타</span>
+</label>
+</div>
+</div>
+</section>
+
+<!-- 2. 캐릭터 카드 리스트 영역 -->
+<section id="char-list" class="char-list-container">
 <!-- [제갈민우] -->
 <article class="char-card" data-gender="male" data-role="student" data-contract="good" data-faction="jeongpa">
-    <div class="card-inner">
-        <div class="card-front">
-            <div class="card-visual" style="background-image: url('images/JMU_normal.png');"></div>
-            <div class="card-info-wuxia">
-                <!-- 좌측 정보 -->
-                <div class="info-left">
-                    <div class="wuxia-name">제갈민우</div>
-                    <div class="wuxia-specs">正派 / 21세</div>
-                    <div class="wuxia-mbti">INFJ / 1w2</div>
-                </div>
-                <!-- 우측 대사 -->
-                <div class="info-right">
-                    <div class="wuxia-quote">"정도(正道)가 결국엔 가장 빠른 길이지 않겠습니까?"</div>
-                </div>
-            </div>
-        </div>
-        <div class="card-back" style="background-image: url('images/제갈민우_magic.png');">
-            <div class="old-stamp good">善</div>
-        </div>
-    </div>
+<div class="card-inner">
+<div class="card-front">
+<div class="card-visual" style="background-image: url('images/JMU_normal.png');"></div>
+<div class="card-info-wuxia">
+<!-- 좌측 정보 -->
+<div class="info-left">
+<div class="wuxia-name">제갈민우</div>
+<div class="wuxia-specs">正派 / 21세</div>
+<div class="wuxia-mbti">INFJ / 1w2</div>
+</div>
+<!-- 우측 대사 -->
+<div class="info-right">
+<div class="wuxia-quote">"정도(正道)가 결국엔 가장 빠른 길이지 않겠습니까?"</div>
+</div>
+</div>
+</div>
+<div class="card-back" style="background-image: url('images/제갈민우_magic.png');">
+<div class="old-stamp good">善</div>
+</div>
+</div>
 </article>
 
 <!-- [백린] -->
 <article class="char-card" data-gender="male" data-role="student" data-contract="none" data-faction="magyo">
-    <div class="card-inner no-flip">
-        <div class="card-front">
-            <div class="card-visual" style="background-image: url('images/백린_normal.png');"></div>
-            <div class="card-info-wuxia">
-                <div class="info-left">
-                    <div class="wuxia-name">백린</div>
-                    <div class="wuxia-specs">魔敎 / 19세</div>
-                    <div class="wuxia-mbti">ENTP / 7w8</div>
-                </div>
-                <div class="info-right">
-                    <div class="wuxia-quote">"어, 미안! 내가 좀 급한 일이 있어서. 나중에 봐!"</div>
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="card-inner no-flip">
+<div class="card-front">
+<div class="card-visual" style="background-image: url('images/백린_normal.png');"></div>
+<div class="card-info-wuxia">
+<div class="info-left">
+<div class="wuxia-name">백린</div>
+<div class="wuxia-specs">魔敎 / 19세</div>
+<div class="wuxia-mbti">ENTP / 7w8</div>
+</div>
+<div class="info-right">
+<div class="wuxia-quote">"어, 미안! 내가 좀 급한 일이 있어서. 나중에 봐!"</div>
+</div>
+</div>
+</div>
+</div>
 </article>
 
 <!-- [서문준] -->
 <article class="char-card" data-gender="male" data-role="student" data-contract="none" data-faction="jeongpa">
-    <div class="card-inner no-flip">
-        <div class="card-front">
-            <div class="card-visual" style="background-image: url('images/서문준_normal.png');"></div>
-            <div class="card-info-wuxia">
-                <div class="info-left">
-                    <div class="wuxia-name">서문준</div>
-                    <div class="wuxia-specs">正派 / 22세</div>
-                    <div class="wuxia-mbti">INTP / 5w4</div>
-                </div>
-                <div class="info-right">
-                    <div class="wuxia-quote">"이해도 못해놓고 칼부터 뽑을 순 없잖아, 멍청아."</div>
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="card-inner no-flip">
+<div class="card-front">
+<div class="card-visual" style="background-image: url('images/서문준_normal.png');"></div>
+<div class="card-info-wuxia">
+<div class="info-left">
+<div class="wuxia-name">서문준</div>
+<div class="wuxia-specs">正派 / 22세</div>
+<div class="wuxia-mbti">INTP / 5w4</div>
+</div>
+<div class="info-right">
+<div class="wuxia-quote">"이해도 못해놓고 칼부터 뽑을 순 없잖아, 멍청아."</div>
+</div>
+</div>
+</div>
+</div>
 </article>
 
 <!-- [공손유나] -->
 <article class="char-card" data-gender="female" data-role="student" data-contract="good" data-faction="jeongpa">
-    <div class="card-inner">
-        <div class="card-front">
-            <div class="card-visual" style="background-image: url('images/공손유나_normal.png');"></div>
-            <div class="card-info-wuxia">
-                <div class="info-left">
-                    <div class="wuxia-name">공손유나</div>
-                    <div class="wuxia-specs">正派 / 20세</div>
-                    <div class="wuxia-mbti">ENFP / 7w6</div>
-                </div>
-                <div class="info-right">
-                    <div class="wuxia-quote">"진정한 고수는 결정적인 순간에 등장하는 법! …엇, 지각이요? 아 교관님 제발 한 번만!!!"</div>
-                </div>
-            </div>
-        </div>
-        <div class="card-back" style="background-image: url('images/공손유나_magic.png');">
-            <div class="old-stamp good">善</div>
-        </div>
-    </div>
+<div class="card-inner">
+<div class="card-front">
+<div class="card-visual" style="background-image: url('images/공손유나_normal.png');"></div>
+<div class="card-info-wuxia">
+<div class="info-left">
+<div class="wuxia-name">공손유나</div>
+<div class="wuxia-specs">正派 / 20세</div>
+<div class="wuxia-mbti">ENFP / 7w6</div>
+</div>
+<div class="info-right">
+<div class="wuxia-quote">"진정한 고수는 결정적인 순간에 등장하는 법! …엇, 지각이요? 아 교관님 제발 한 번만!!!"</div>
+</div>
+</div>
+</div>
+<div class="card-back" style="background-image: url('images/공손유나_magic.png');">
+<div class="old-stamp good">善</div>
+</div>
+</div>
 </article>
 
 <!-- [남궁서현] (교관) -->
 <article class="char-card" data-gender="female" data-role="instructor" data-contract="none" data-faction="jeongpa">
-    <div class="card-inner no-flip">
-        <div class="card-front">
-            <div class="card-visual" style="background-image: url('images/남궁서현_normal.png');"></div>
-            <div class="card-info-wuxia">
-                <div class="info-left">
-                    <div class="wuxia-name">남궁서현</div>
-                    <div class="wuxia-specs">敎官 / 33세</div>
-                    <div class="wuxia-mbti">INTJ / 1w9</div>
-                </div>
-                <div class="info-right">
-                    <div class="wuxia-quote">"교육은 군역이 아닙니다. 규정을 준수하십시오."</div>
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="card-inner no-flip">
+<div class="card-front">
+<div class="card-visual" style="background-image: url('images/남궁서현_normal.png');"></div>
+<div class="card-info-wuxia">
+<div class="info-left">
+<div class="wuxia-name">남궁서현</div>
+<div class="wuxia-specs">敎官 / 33세</div>
+<div class="wuxia-mbti">INTJ / 1w9</div>
+</div>
+<div class="info-right">
+<div class="wuxia-quote">"교육은 군역이 아닙니다. 규정을 준수하십시오."</div>
+</div>
+</div>
+</div>
+</div>
 </article>
 
 <!-- [윤혁진] (교관) -->
 <article class="char-card" data-gender="male" data-role="instructor" data-contract="none" data-faction="etc">
-    <div class="card-inner no-flip">
-        <div class="card-front">
-            <div class="card-visual" style="background-image: url('images/윤혁진_normal.png');"></div>
-            <div class="card-info-wuxia">
-                <div class="info-left">
-                    <div class="wuxia-name">윤혁진</div>
-                    <div class="wuxia-specs">敎官 / 31세</div>
-                    <div class="wuxia-mbti">ESTJ / 8w7</div>
-                </div>
-                <div class="info-right">
-                    <div class="wuxia-quote">"시간 엄수. 대련은 짧게. 변명은 필요 없다."</div>
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="card-inner no-flip">
+<div class="card-front">
+<div class="card-visual" style="background-image: url('images/윤혁진_normal.png');"></div>
+<div class="card-info-wuxia">
+<div class="info-left">
+<div class="wuxia-name">윤혁진</div>
+<div class="wuxia-specs">敎官 / 31세</div>
+<div class="wuxia-mbti">ESTJ / 8w7</div>
+</div>
+<div class="info-right">
+<div class="wuxia-quote">"시간 엄수. 대련은 짧게. 변명은 필요 없다."</div>
+</div>
+</div>
+</div>
+</div>
 </article>
 
 <!-- [진소연] -->
 <article class="char-card" data-gender="female" data-role="student" data-contract="evil" data-faction="jeongpa">
-    <div class="card-inner">
-        <div class="card-front">
-            <div class="card-visual" style="background-image: url('images/진소연_normal.png');"></div>
-            <div class="card-info-wuxia">
-                <div class="info-left">
-                    <div class="wuxia-name">진소연</div>
-                    <div class="wuxia-specs">正派 / 23세</div>
-                    <div class="wuxia-mbti">ENTJ / 3w4</div>
-                </div>
-                <div class="info-right">
-                    <div class="wuxia-quote">"선이니 악이니 따질 시간에, 이기는 법이나 배우시지."</div>
-                </div>
-            </div>
-        </div>
-        <div class="card-back" style="background-image: url('images/진소연_magic.png');">
-            <div class="old-stamp evil">惡</div>
-        </div>
-    </div>
+<div class="card-inner">
+<div class="card-front">
+<div class="card-visual" style="background-image: url('images/진소연_normal.png');"></div>
+<div class="card-info-wuxia">
+<div class="info-left">
+<div class="wuxia-name">진소연</div>
+<div class="wuxia-specs">正派 / 23세</div>
+<div class="wuxia-mbti">ENTJ / 3w4</div>
+</div>
+<div class="info-right">
+<div class="wuxia-quote">"선이니 악이니 따질 시간에, 이기는 법이나 배우시지."</div>
+</div>
+</div>
+</div>
+<div class="card-back" style="background-image: url('images/진소연_magic.png');">
+<div class="old-stamp evil">惡</div>
+</div>
+</div>
 </article>
 
 <!-- [하연지] -->
 <article class="char-card" data-gender="female" data-role="student" data-contract="good" data-faction="jeongpa">
-    <div class="card-inner">
-        <div class="card-front">
-            <div class="card-visual" style="background-image: url('images/하연지_normal.png');"></div>
-            <div class="card-info-wuxia">
-                <div class="info-left">
-                    <div class="wuxia-name">하연지</div>
-                    <div class="wuxia-specs">正派 / 22세</div>
-                    <div class="wuxia-mbti">ENFJ / 2w3</div>
-                </div>
-                <div class="info-right">
-                    <div class="wuxia-quote">"우리가 함께라면 더 큰 의미를 찾을 수 있을 거야."</div>
-                </div>
-            </div>
-        </div>
-        <div class="card-back" style="background-image: url('images/하연지_magic.png');">
-            <div class="old-stamp good">善</div>
-        </div>
-    </div>
+<div class="card-inner">
+<div class="card-front">
+<div class="card-visual" style="background-image: url('images/하연지_normal.png');"></div>
+<div class="card-info-wuxia">
+<div class="info-left">
+<div class="wuxia-name">하연지</div>
+<div class="wuxia-specs">正派 / 22세</div>
+<div class="wuxia-mbti">ENFJ / 2w3</div>
+</div>
+<div class="info-right">
+<div class="wuxia-quote">"우리가 함께라면 더 큰 의미를 찾을 수 있을 거야."</div>
+</div>
+</div>
+</div>
+<div class="card-back" style="background-image: url('images/하연지_magic.png');">
+<div class="old-stamp good">善</div>
+</div>
+</div>
 </article>
-            
+
 <!-- [마연후] -->
 <article class="char-card" data-gender="male" data-role="student" data-contract="evil" data-faction="magyo">
-    <div class="card-inner">
-        <div class="card-front">
-            <div class="card-visual" style="background-image: url('images/마연후_normal.png');"></div>
-            <div class="card-info-wuxia">
-                <div class="info-left">
-                    <div class="wuxia-name">마연후</div>
-                    <div class="wuxia-specs">魔敎 / 21세</div>
-                    <div class="wuxia-mbti">ESTP / 8w7</div>
-                </div>
-                <div class="info-right">
-                    <div class="wuxia-quote">"약해서 안 그래도 살기 힘들 텐데, 남까지 챙긴다니 대단한데?"</div>
-                </div>
-            </div>
-        </div>
-        <div class="card-back" style="background-image: url('images/MYH_magic.png');">
-            <div class="old-stamp evil">惡</div>
-        </div>
-    </div>
+<div class="card-inner">
+<div class="card-front">
+<div class="card-visual" style="background-image: url('images/마연후_normal.png');"></div>
+<div class="card-info-wuxia">
+<div class="info-left">
+<div class="wuxia-name">마연후</div>
+<div class="wuxia-specs">魔敎 / 21세</div>
+<div class="wuxia-mbti">ESTP / 8w7</div>
+</div>
+<div class="info-right">
+<div class="wuxia-quote">"약해서 안 그래도 살기 힘들 텐데, 남까지 챙긴다니 대단한데?"</div>
+</div>
+</div>
+</div>
+<div class="card-back" style="background-image: url('images/MYH_magic.png');">
+<div class="old-stamp evil">惡</div>
+</div>
+</div>
 </article>
 
 
-            <!-- ================= [교관] ================= -->
+<!-- ================= [교관] ================= -->
 
 <!-- [라비안] -->
 <article class="char-card" data-gender="male" data-role="instructor" data-contract="none" data-faction="etc">
-    <div class="card-inner no-flip">
-        <div class="card-front">
-            <div class="card-visual" style="background-image: url('images/라비안_normal.jpg');"></div>
-            <div class="card-info-wuxia">
-                <div class="info-left">
-                    <div class="wuxia-name">라비안</div>
-                    <div class="wuxia-specs">舊界(교관) / 36세</div>
-                    <div class="wuxia-mbti">ISTP / 5w6</div>
-                </div>
-                <div class="info-right">
-                    <div class="wuxia-quote">"전장은 영광이 아니라 생존이다. 살아서 돌아와라."</div>
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="card-inner no-flip">
+<div class="card-front">
+<div class="card-visual" style="background-image: url('images/라비안_normal.png');"></div>
+<div class="card-info-wuxia">
+<div class="info-left">
+<div class="wuxia-name">라비안</div>
+<div class="wuxia-specs">舊界(교관) / 36세</div>
+<div class="wuxia-mbti">ISTP / 5w6</div>
+</div>
+<div class="info-right">
+<div class="wuxia-quote">"전장은 영광이 아니라 생존이다. 살아서 돌아와라."</div>
+</div>
+</div>
+</div>
+</div>
 </article>
 
 
@@ -329,87 +329,87 @@
 
 <!-- [설가연] -->
 <article class="char-card" data-gender="female" data-role="student" data-contract="evil" data-faction="magyo">
-    <div class="card-inner">
-        <div class="card-front">
-            <div class="card-visual" style="background-image: url('images/설가연_normal.jpg');"></div>
-            <div class="card-info-wuxia">
-                <div class="info-left">
-                    <div class="wuxia-name">설가연</div>
-                    <div class="wuxia-specs">魔敎 / 22세</div>
-                    <div class="wuxia-mbti">INTJ / 5w6</div>
-                </div>
-                <div class="info-right">
-                    <div class="wuxia-quote">"감정은 불필요한 변수일 뿐이야. 결과만 가져와."</div>
-                </div>
-            </div>
-        </div>
-        <div class="card-back" style="background-image: url('images/설가연_magic.jpg');">
-            <div class="old-stamp evil">惡</div>
-        </div>
-    </div>
+<div class="card-inner">
+<div class="card-front">
+<div class="card-visual" style="background-image: url('images/설가연_normal.png');"></div>
+<div class="card-info-wuxia">
+<div class="info-left">
+<div class="wuxia-name">설가연</div>
+<div class="wuxia-specs">魔敎 / 22세</div>
+<div class="wuxia-mbti">INTJ / 5w6</div>
+</div>
+<div class="info-right">
+<div class="wuxia-quote">"감정은 불필요한 변수일 뿐이야. 결과만 가져와."</div>
+</div>
+</div>
+</div>
+<div class="card-back" style="background-image: url('images/설가연_magic.png');">
+<div class="old-stamp evil">惡</div>
+</div>
+</div>
 </article>
 
 <!-- [도연화] -->
 <article class="char-card" data-gender="female" data-role="student" data-contract="none" data-faction="magyo">
-    <div class="card-inner no-flip">
-        <div class="card-front">
-            <div class="card-visual" style="background-image: url('images/도연화_normal.jpg');"></div>
-            <div class="card-info-wuxia">
-                <div class="info-left">
-                    <div class="wuxia-name">도연화</div>
-                    <div class="wuxia-specs">魔敎 / 20세</div>
-                    <div class="wuxia-mbti">ISFP / 9w1</div>
-                </div>
-                <div class="info-right">
-                    <div class="wuxia-quote">"밥은 먹고 싸우는 거야? ...선만 넘지 마."</div>
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="card-inner no-flip">
+<div class="card-front">
+<div class="card-visual" style="background-image: url('images/도연화_normal.png');"></div>
+<div class="card-info-wuxia">
+<div class="info-left">
+<div class="wuxia-name">도연화</div>
+<div class="wuxia-specs">魔敎 / 20세</div>
+<div class="wuxia-mbti">ISFP / 9w1</div>
+</div>
+<div class="info-right">
+<div class="wuxia-quote">"밥은 먹고 싸우는 거야? ...선만 넘지 마."</div>
+</div>
+</div>
+</div>
+</div>
 </article>
 
 <!-- [염도진] -->
 <article class="char-card" data-gender="male" data-role="student" data-contract="good" data-faction="magyo">
-    <div class="card-inner">
-        <div class="card-front">
-            <div class="card-visual" style="background-image: url('images/염도진_normal.jpg');"></div>
-            <div class="card-info-wuxia">
-                <div class="info-left">
-                    <div class="wuxia-name">염도진</div>
-                    <div class="wuxia-specs">魔敎 / 23세</div>
-                    <div class="wuxia-mbti">ENFP / 4w3</div>
-                </div>
-                <div class="info-right">
-                    <div class="wuxia-quote">"마교 출신이 착하면 안 된다는 법이라도 있어? 하하!"</div>
-                </div>
-            </div>
-        </div>
-        <div class="card-back" style="background-image: url('images/염도진_magic.jpg');">
-            <div class="old-stamp good">善</div>
-        </div>
-    </div>
+<div class="card-inner">
+<div class="card-front">
+<div class="card-visual" style="background-image: url('images/염도진_normal.png');"></div>
+<div class="card-info-wuxia">
+<div class="info-left">
+<div class="wuxia-name">염도진</div>
+<div class="wuxia-specs">魔敎 / 23세</div>
+<div class="wuxia-mbti">ENFP / 4w3</div>
+</div>
+<div class="info-right">
+<div class="wuxia-quote">"마교 출신이 착하면 안 된다는 법이라도 있어? 하하!"</div>
+</div>
+</div>
+</div>
+<div class="card-back" style="background-image: url('images/염도진_magic.png');">
+<div class="old-stamp good">善</div>
+</div>
+</div>
 </article>
 
 <!-- [진연비] -->
 <article class="char-card" data-gender="female" data-role="student" data-contract="evil" data-faction="magyo">
-    <div class="card-inner">
-        <div class="card-front">
-            <div class="card-visual" style="background-image: url('images/진연비_normal.jpg');"></div>
-            <div class="card-info-wuxia">
-                <div class="info-left">
-                    <div class="wuxia-name">진연비</div>
-                    <div class="wuxia-specs">魔敎 / 18세</div>
-                    <div class="wuxia-mbti">ESFJ / 6w7</div>
-                </div>
-                <div class="info-right">
-                    <div class="wuxia-quote">"배신자는 절대 용서 안 해! 내 리본 맛 좀 볼래?"</div>
-                </div>
-            </div>
-        </div>
-        <div class="card-back" style="background-image: url('images/진연비_magic.jpg');">
-            <div class="old-stamp evil">惡</div>
-        </div>
-    </div>
+<div class="card-inner">
+<div class="card-front">
+<div class="card-visual" style="background-image: url('images/진연비_normal.png');"></div>
+<div class="card-info-wuxia">
+<div class="info-left">
+<div class="wuxia-name">진연비</div>
+<div class="wuxia-specs">魔敎 / 18세</div>
+<div class="wuxia-mbti">ESFJ / 6w7</div>
+</div>
+<div class="info-right">
+<div class="wuxia-quote">"배신자는 절대 용서 안 해! 내 리본 맛 좀 볼래?"</div>
+</div>
+</div>
+</div>
+<div class="card-back" style="background-image: url('images/진연비_magic.png');">
+<div class="old-stamp evil">惡</div>
+</div>
+</div>
 </article>
 
 
@@ -417,128 +417,128 @@
 
 <!-- [우진태] -->
 <article class="char-card" data-gender="male" data-role="student" data-contract="good" data-faction="sapa">
-    <div class="card-inner">
-        <div class="card-front">
-            <div class="card-visual" style="background-image: url('images/우진태_normal.jpg');"></div>
-            <div class="card-info-wuxia">
-                <div class="info-left">
-                    <div class="wuxia-name">우진태</div>
-                    <div class="wuxia-specs">邪派 / 21세</div>
-                    <div class="wuxia-mbti">ISTP / 5w6</div>
-                </div>
-                <div class="info-right">
-                    <div class="wuxia-quote">"계약도 결국 거래야. 뒷정리는 내가 할 테니 빠져."</div>
-                </div>
-            </div>
-        </div>
-        <div class="card-back" style="background-image: url('images/우진태_magic.jpg');">
-            <div class="old-stamp good">善</div>
-        </div>
-    </div>
+<div class="card-inner">
+<div class="card-front">
+<div class="card-visual" style="background-image: url('images/우진태_normal.png');"></div>
+<div class="card-info-wuxia">
+<div class="info-left">
+<div class="wuxia-name">우진태</div>
+<div class="wuxia-specs">邪派 / 21세</div>
+<div class="wuxia-mbti">ISTP / 5w6</div>
+</div>
+<div class="info-right">
+<div class="wuxia-quote">"계약도 결국 거래야. 뒷정리는 내가 할 테니 빠져."</div>
+</div>
+</div>
+</div>
+<div class="card-back" style="background-image: url('images/우진태_magic.png');">
+<div class="old-stamp good">善</div>
+</div>
+</div>
 </article>
 
 <!-- [양서림] -->
 <article class="char-card" data-gender="female" data-role="student" data-contract="none" data-faction="sapa">
-    <div class="card-inner no-flip">
-        <div class="card-front">
-            <div class="card-visual" style="background-image: url('images/양서림_normal.jpg');"></div>
-            <div class="card-info-wuxia">
-                <div class="info-left">
-                    <div class="wuxia-name">양서림</div>
-                    <div class="wuxia-specs">邪派 / 20세</div>
-                    <div class="wuxia-mbti">ENTP / 3w2</div>
-                </div>
-                <div class="info-right">
-                    <div class="wuxia-quote">"규칙? 그거 깨라고 있는 거 아니었어? 재밌잖아!"</div>
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="card-inner no-flip">
+<div class="card-front">
+<div class="card-visual" style="background-image: url('images/양서림_normal.png');"></div>
+<div class="card-info-wuxia">
+<div class="info-left">
+<div class="wuxia-name">양서림</div>
+<div class="wuxia-specs">邪派 / 20세</div>
+<div class="wuxia-mbti">ENTP / 3w2</div>
+</div>
+<div class="info-right">
+<div class="wuxia-quote">"규칙? 그거 깨라고 있는 거 아니었어? 재밌잖아!"</div>
+</div>
+</div>
+</div>
+</div>
 </article>
 
 <!-- [심유겸] -->
 <article class="char-card" data-gender="male" data-role="student" data-contract="evil" data-faction="sapa">
-    <div class="card-inner">
-        <div class="card-front">
-            <div class="card-visual" style="background-image: url('images/심유겸_normal.jpg');"></div>
-            <div class="card-info-wuxia">
-                <div class="info-left">
-                    <div class="wuxia-name">심유겸</div>
-                    <div class="wuxia-specs">邪派 / 22세</div>
-                    <div class="wuxia-mbti">INTP / 6w5</div>
-                </div>
-                <div class="info-right">
-                    <div class="wuxia-quote">"가설 검증 중입니다. 방해하지 마세요. 터질지도 모르니까."</div>
-                </div>
-            </div>
-        </div>
-        <div class="card-back" style="background-image: url('images/심유겸_magic.jpg');">
-            <div class="old-stamp evil">惡</div>
-        </div>
-    </div>
+<div class="card-inner">
+<div class="card-front">
+<div class="card-visual" style="background-image: url('images/심유겸_normal.png');"></div>
+<div class="card-info-wuxia">
+<div class="info-left">
+<div class="wuxia-name">심유겸</div>
+<div class="wuxia-specs">邪派 / 22세</div>
+<div class="wuxia-mbti">INTP / 6w5</div>
+</div>
+<div class="info-right">
+<div class="wuxia-quote">"가설 검증 중입니다. 방해하지 마세요. 터질지도 모르니까."</div>
+</div>
+</div>
+</div>
+<div class="card-back" style="background-image: url('images/심유겸_magic.png');">
+<div class="old-stamp evil">惡</div>
+</div>
+</div>
 </article>
 
 <!-- [정라희] -->
 <article class="char-card" data-gender="female" data-role="student" data-contract="good" data-faction="sapa">
-    <div class="card-inner">
-        <div class="card-front">
-            <div class="card-visual" style="background-image: url('images/정라희_normal.jpg');"></div>
-            <div class="card-info-wuxia">
-                <div class="info-left">
-                    <div class="wuxia-name">정라희</div>
-                    <div class="wuxia-specs">邪派 / 19세</div>
-                    <div class="wuxia-mbti">INFJ / 4w5</div>
-                </div>
-                <div class="info-right">
-                    <div class="wuxia-quote">"진흙 속에서도 연꽃은 피어나니까요... 저도 그렇겠죠."</div>
-                </div>
-            </div>
-        </div>
-        <div class="card-back" style="background-image: url('images/정라희_magic.jpg');">
-            <div class="old-stamp good">善</div>
-        </div>
-    </div>
+<div class="card-inner">
+<div class="card-front">
+<div class="card-visual" style="background-image: url('images/정라희_normal.png');"></div>
+<div class="card-info-wuxia">
+<div class="info-left">
+<div class="wuxia-name">정라희</div>
+<div class="wuxia-specs">邪派 / 19세</div>
+<div class="wuxia-mbti">INFJ / 4w5</div>
+</div>
+<div class="info-right">
+<div class="wuxia-quote">"진흙 속에서도 연꽃은 피어나니까요... 저도 그렇겠죠."</div>
+</div>
+</div>
+</div>
+<div class="card-back" style="background-image: url('images/정라희_magic.png');">
+<div class="old-stamp good">善</div>
+</div>
+</div>
 </article>
 
 <!-- [강도하] -->
 <article class="char-card" data-gender="male" data-role="student" data-contract="none" data-faction="sapa">
-    <div class="card-inner no-flip">
-        <div class="card-front">
-            <div class="card-visual" style="background-image: url('images/강도하_normal.jpg');"></div>
-            <div class="card-info-wuxia">
-                <div class="info-left">
-                    <div class="wuxia-name">강도하</div>
-                    <div class="wuxia-specs">邪派 / 18세</div>
-                    <div class="wuxia-mbti">ESFP / 7w8</div>
-                </div>
-                <div class="info-right">
-                    <div class="wuxia-quote">"복잡한 건 딱 질색이야! 오늘 밤엔 어디서 놀까?"</div>
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="card-inner no-flip">
+<div class="card-front">
+<div class="card-visual" style="background-image: url('images/강도하_normal.png');"></div>
+<div class="card-info-wuxia">
+<div class="info-left">
+<div class="wuxia-name">강도하</div>
+<div class="wuxia-specs">邪派 / 18세</div>
+<div class="wuxia-mbti">ESFP / 7w8</div>
+</div>
+<div class="info-right">
+<div class="wuxia-quote">"복잡한 건 딱 질색이야! 오늘 밤엔 어디서 놀까?"</div>
+</div>
+</div>
+</div>
+</div>
 </article>
 
 <!-- [채유빈] -->
 <article class="char-card" data-gender="female" data-role="student" data-contract="evil" data-faction="sapa">
-    <div class="card-inner">
-        <div class="card-front">
-            <div class="card-visual" style="background-image: url('images/채유빈_normal.jpg');"></div>
-            <div class="card-info-wuxia">
-                <div class="info-left">
-                    <div class="wuxia-name">채유빈</div>
-                    <div class="wuxia-specs">邪派 / 21세</div>
-                    <div class="wuxia-mbti">ISTJ / 1w9</div>
-                </div>
-                <div class="info-right">
-                    <div class="wuxia-quote">"효율이 떨어집니다. 감정은 접어두고 임무에 집중하세요."</div>
-                </div>
-            </div>
-        </div>
-        <div class="card-back" style="background-image: url('images/채유빈_magic.jpg');">
-            <div class="old-stamp evil">惡</div>
-        </div>
-    </div>
+<div class="card-inner">
+<div class="card-front">
+<div class="card-visual" style="background-image: url('images/채유빈_normal.png');"></div>
+<div class="card-info-wuxia">
+<div class="info-left">
+<div class="wuxia-name">채유빈</div>
+<div class="wuxia-specs">邪派 / 21세</div>
+<div class="wuxia-mbti">ISTJ / 1w9</div>
+</div>
+<div class="info-right">
+<div class="wuxia-quote">"효율이 떨어집니다. 감정은 접어두고 임무에 집중하세요."</div>
+</div>
+</div>
+</div>
+<div class="card-back" style="background-image: url('images/채유빈_magic.png');">
+<div class="old-stamp evil">惡</div>
+</div>
+</div>
 </article>
 
 
@@ -546,153 +546,153 @@
 
 <!-- [박하준] -->
 <article class="char-card" data-gender="male" data-role="student" data-contract="none" data-faction="etc">
-    <div class="card-inner no-flip">
-        <div class="card-front">
-            <div class="card-visual" style="background-image: url('images/박하준_normal.jpg');"></div>
-            <div class="card-info-wuxia">
-                <div class="info-left">
-                    <div class="wuxia-name">박하준</div>
-                    <div class="wuxia-specs">一般 / 19세</div>
-                    <div class="wuxia-mbti">ISFJ / 6w5</div>
-                </div>
-                <div class="info-right">
-                    <div class="wuxia-quote">"저, 저는 그냥 무사히 졸업만 하면 되는데... 으아앙!"</div>
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="card-inner no-flip">
+<div class="card-front">
+<div class="card-visual" style="background-image: url('images/박하준_normal.png');"></div>
+<div class="card-info-wuxia">
+<div class="info-left">
+<div class="wuxia-name">박하준</div>
+<div class="wuxia-specs">一般 / 19세</div>
+<div class="wuxia-mbti">ISFJ / 6w5</div>
+</div>
+<div class="info-right">
+<div class="wuxia-quote">"저, 저는 그냥 무사히 졸업만 하면 되는데... 으아앙!"</div>
+</div>
+</div>
+</div>
+</div>
 </article>
 
 <!-- [최아린] -->
 <article class="char-card" data-gender="female" data-role="student" data-contract="good" data-faction="etc">
-    <div class="card-inner">
-        <div class="card-front">
-            <div class="card-visual" style="background-image: url('images/최아린_normal.jpg');"></div>
-            <div class="card-info-wuxia">
-                <div class="info-left">
-                    <div class="wuxia-name">최아린</div>
-                    <div class="wuxia-specs">一般 / 18세</div>
-                    <div class="wuxia-mbti">ENFJ / 6w7</div>
-                </div>
-                <div class="info-right">
-                    <div class="wuxia-quote">"다 같이 힘을 합치면 못 할 게 없어요! 파이팅!"</div>
-                </div>
-            </div>
-        </div>
-        <div class="card-back" style="background-image: url('images/최아린_magic.jpg');">
-            <div class="old-stamp good">善</div>
-        </div>
-    </div>
+<div class="card-inner">
+<div class="card-front">
+<div class="card-visual" style="background-image: url('images/최아린_normal.png');"></div>
+<div class="card-info-wuxia">
+<div class="info-left">
+<div class="wuxia-name">최아린</div>
+<div class="wuxia-specs">一般 / 18세</div>
+<div class="wuxia-mbti">ENFJ / 6w7</div>
+</div>
+<div class="info-right">
+<div class="wuxia-quote">"다 같이 힘을 합치면 못 할 게 없어요! 파이팅!"</div>
+</div>
+</div>
+</div>
+<div class="card-back" style="background-image: url('images/최아린_magic.png');">
+<div class="old-stamp good">善</div>
+</div>
+</div>
 </article>
 
 <!-- [김도윤] -->
 <article class="char-card" data-gender="male" data-role="student" data-contract="evil" data-faction="etc">
-    <div class="card-inner">
-        <div class="card-front">
-            <div class="card-visual" style="background-image: url('images/김도윤_normal.jpg');"></div>
-            <div class="card-info-wuxia">
-                <div class="info-left">
-                    <div class="wuxia-name">김도윤</div>
-                    <div class="wuxia-specs">一般 / 20세</div>
-                    <div class="wuxia-mbti">ESTJ / 6w5</div>
-                </div>
-                <div class="info-right">
-                    <div class="wuxia-quote">"질서를 위해서라면 강력한 힘이 필요해. 그게 악이라도."</div>
-                </div>
-            </div>
-        </div>
-        <div class="card-back" style="background-image: url('images/김도윤_magic.jpg');">
-            <div class="old-stamp evil">惡</div>
-        </div>
-    </div>
+<div class="card-inner">
+<div class="card-front">
+<div class="card-visual" style="background-image: url('images/김도윤_normal.png');"></div>
+<div class="card-info-wuxia">
+<div class="info-left">
+<div class="wuxia-name">김도윤</div>
+<div class="wuxia-specs">一般 / 20세</div>
+<div class="wuxia-mbti">ESTJ / 6w5</div>
+</div>
+<div class="info-right">
+<div class="wuxia-quote">"질서를 위해서라면 강력한 힘이 필요해. 그게 악이라도."</div>
+</div>
+</div>
+</div>
+<div class="card-back" style="background-image: url('images/김도윤_magic.png');">
+<div class="old-stamp evil">惡</div>
+</div>
+</div>
 </article>
 
 <!-- [한세라] -->
 <article class="char-card" data-gender="female" data-role="student" data-contract="none" data-faction="etc">
-    <div class="card-inner no-flip">
-        <div class="card-front">
-            <div class="card-visual" style="background-image: url('images/한세라_normal.jpg');"></div>
-            <div class="card-info-wuxia">
-                <div class="info-left">
-                    <div class="wuxia-name">한세라</div>
-                    <div class="wuxia-specs">一般 / 19세</div>
-                    <div class="wuxia-mbti">INFP / 4w5</div>
-                </div>
-                <div class="info-right">
-                    <div class="wuxia-quote">"그냥... 조용히 집에 가고 싶어요. 여긴 너무 시끄러워."</div>
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="card-inner no-flip">
+<div class="card-front">
+<div class="card-visual" style="background-image: url('images/한세라_normal.png');"></div>
+<div class="card-info-wuxia">
+<div class="info-left">
+<div class="wuxia-name">한세라</div>
+<div class="wuxia-specs">一般 / 19세</div>
+<div class="wuxia-mbti">INFP / 4w5</div>
+</div>
+<div class="info-right">
+<div class="wuxia-quote">"그냥... 조용히 집에 가고 싶어요. 여긴 너무 시끄러워."</div>
+</div>
+</div>
+</div>
+</div>
 </article>
 
 <!-- [이준서] -->
 <article class="char-card" data-gender="male" data-role="student" data-contract="good" data-faction="etc">
-    <div class="card-inner">
-        <div class="card-front">
-            <div class="card-visual" style="background-image: url('images/이준서_normal.jpg');"></div>
-            <div class="card-info-wuxia">
-                <div class="info-left">
-                    <div class="wuxia-name">이준서</div>
-                    <div class="wuxia-specs">一般 / 21세</div>
-                    <div class="wuxia-mbti">ESFP / 3w2</div>
-                </div>
-                <div class="info-right">
-                    <div class="wuxia-quote">"이거 봐! 내 변신 폼 완전 멋지지 않냐? 스타 탄생이라고!"</div>
-                </div>
-            </div>
-        </div>
-        <div class="card-back" style="background-image: url('images/이준서_magic.jpg');">
-            <div class="old-stamp good">善</div>
-        </div>
-    </div>
+<div class="card-inner">
+<div class="card-front">
+<div class="card-visual" style="background-image: url('images/이준서_normal.png');"></div>
+<div class="card-info-wuxia">
+<div class="info-left">
+<div class="wuxia-name">이준서</div>
+<div class="wuxia-specs">一般 / 21세</div>
+<div class="wuxia-mbti">ESFP / 3w2</div>
+</div>
+<div class="info-right">
+<div class="wuxia-quote">"이거 봐! 내 변신 폼 완전 멋지지 않냐? 스타 탄생이라고!"</div>
+</div>
+</div>
+</div>
+<div class="card-back" style="background-image: url('images/이준서_magic.png');">
+<div class="old-stamp good">善</div>
+</div>
+</div>
 </article>
 
 <!-- [아르네] -->
 <article class="char-card" data-gender="female" data-role="student" data-contract="good" data-faction="etc">
-    <div class="card-inner">
-        <div class="card-front">
-            <div class="card-visual" style="background-image: url('images/아르네_normal.png');"></div>
-            <div class="card-info-wuxia">
-                <div class="info-left">
-                    <div class="wuxia-name">아르네</div>
-                    <div class="wuxia-specs">舊界 / 24세</div>
-                    <div class="wuxia-mbti">INTJ / 5w4</div>
-                </div>
-                <div class="info-right">
-                    <div class="wuxia-quote">"당신들은 진정한 절망을 모릅니다... 아직은요."</div>
-                </div>
-            </div>
-        </div>
-        <div class="card-back" style="background-image: url('images/아르네_magic.png');">
-            <div class="old-stamp good">善</div>
-        </div>
-    </div>
+<div class="card-inner">
+<div class="card-front">
+<div class="card-visual" style="background-image: url('images/아르네_normal.png');"></div>
+<div class="card-info-wuxia">
+<div class="info-left">
+<div class="wuxia-name">아르네</div>
+<div class="wuxia-specs">舊界 / 24세</div>
+<div class="wuxia-mbti">INTJ / 5w4</div>
+</div>
+<div class="info-right">
+<div class="wuxia-quote">"당신들은 진정한 절망을 모릅니다... 아직은요."</div>
+</div>
+</div>
+</div>
+<div class="card-back" style="background-image: url('images/아르네_magic.png');">
+<div class="old-stamp good">善</div>
+</div>
+</div>
 </article>
 
 <!-- [정파 추가 (비연호)] -->
 <article class="char-card" data-gender="male" data-role="student" data-contract="none" data-faction="jeongpa">
-    <div class="card-inner no-flip">
-        <div class="card-front">
-            <div class="card-visual" style="background-image: url('images/비연호_normal.png');"></div>
-            <div class="card-info-wuxia">
-                <div class="info-left">
-                    <div class="wuxia-name">비연호</div>
-                    <div class="wuxia-specs">正派 / 20세</div>
-                    <div class="wuxia-mbti">ISTJ / 6w5</div>
-                </div>
-                <div class="info-right">
-                    <div class="wuxia-quote">"정의에도 인내가 필요한 법입니다. 서두르지 마세요."</div>
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="card-inner no-flip">
+<div class="card-front">
+<div class="card-visual" style="background-image: url('images/비연호_normal.png');"></div>
+<div class="card-info-wuxia">
+<div class="info-left">
+<div class="wuxia-name">비연호</div>
+<div class="wuxia-specs">正派 / 20세</div>
+<div class="wuxia-mbti">ISTJ / 6w5</div>
+</div>
+<div class="info-right">
+<div class="wuxia-quote">"정의에도 인내가 필요한 법입니다. 서두르지 마세요."</div>
+</div>
+</div>
+</div>
+</div>
 </article>
-            
-        </section>
-    </main>
-    <!-- 모바일 카드 팝업용 레이어 -->
-    <div id="mobile-card-overlay"></div>
-    <script src="script.js"></script>
+
+</section>
+</main>
+<!-- 모바일 카드 팝업용 레이어 -->
+<div id="mobile-card-overlay"></div>
+<script src="script.js"></script>
 </body>
 </html>
