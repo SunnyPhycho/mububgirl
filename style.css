@@ -1358,3 +1358,44 @@ ul { list-style: none; }
 .filter-btn.faction-etc input:checked + span {
     background: #7f8c8d; border-color: #7f8c8d; box-shadow: 0 0 10px #7f8c8d; /* 회색 */
 }
+
+/* --- [13. 모바일 전용 팝업 레이어 (Overlay)] --- */
+#mobile-card-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.9); /* 배경 어둡게 */
+    z-index: 10000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none; /* 평소엔 클릭 통과 */
+    transition: opacity 0.3s;
+}
+
+#mobile-card-overlay.active {
+    opacity: 1;
+    pointer-events: auto; /* 활성화되면 클릭 가능 */
+}
+
+/* 팝업 안에 들어갈 카드 클론 */
+.popup-card-clone {
+    width: 90vw;
+    aspect-ratio: 16/9;
+    position: relative;
+    transform-style: preserve-3d;
+    transform: rotateY(180deg); /* 무조건 뒷면이 보이게 */
+    box-shadow: 0 0 30px rgba(255, 183, 213, 0.5);
+    border-radius: 15px;
+}
+
+/* 클론의 뒷면 스타일 (기존 card-back 스타일 상속) */
+.popup-card-clone .card-back {
+    position: absolute;
+    width: 100%; height: 100%;
+    border: 2px solid #fff;
+    border-radius: 15px;
+    background-size: cover;
+    background-position: center;
+    backface-visibility: visible !important; /* 항상 보이게 */
+}
