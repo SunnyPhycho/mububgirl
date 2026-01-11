@@ -887,7 +887,7 @@ ul { list-style: none; }
     /* 평소 크기 */
     .char-card {
         width: 700px;
-        height: 500px;
+        height: 600px;
         scroll-snap-align: center;
         margin: 50px auto;
         opacity: 0.3;
