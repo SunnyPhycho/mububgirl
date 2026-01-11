@@ -1217,6 +1217,37 @@ ul { list-style: none; }
     .card-info-wuxia {
         height: 30%; /* 텍스트 영역은 줄임 (대사만 들어가니까) */
     }
+
+    /* 뒤집혔을 때 (변신 모드) */
+    .char-card.flipped {
+        /* 리스트 흐름에서 빠져나와 화면 전체를 덮음 */
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        
+        /* 16:9 가로 비율 강제 적용 */
+        width: 90vw; /* 화면 너비의 90% */
+        aspect-ratio: 16/9; /* 유튜브 영상 비율 */
+        height: auto; /* 높이는 비율에 맞게 자동 */
+        
+        margin: 0;
+        
+        /* 화면 중앙 정렬을 위한 트랜스폼 */
+        /* scale(1)로 원복 + 중앙 이동 + 뒤집기(180deg) */
+        transform: translate(-50%, -50%) rotateY(180deg) !important;
+        
+        box-shadow: 0 0 50px rgba(255, 183, 213, 0.8); /* 마법광채 */
+    }
+
+    /* 팝업 시 배경을 어둡게 할 가상 요소 (선택사항) */
+    .char-card.flipped::before {
+        content: '';
+        position: fixed;
+        top: -500vh; left: -500vw; right: -500vw; bottom: -500vh; /* 화면 전체 뒤덮기 */
+        background: rgba(0, 0, 0, 0.8); /* 어두운 배경 */
+        transform: translateZ(-100px); /* 카드보다 뒤에 */
+        pointer-events: none;
+    }
 }
 
 /* --- [13. 제작자의 말 (comment.html) 스타일] --- */
