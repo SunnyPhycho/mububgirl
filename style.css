@@ -795,7 +795,7 @@ ul { list-style: none; }
 .char-card.flipped .card-inner { transform: rotateY(180deg); }
 
 
-/* === [모바일: 가로 슬라이드 & 팝업 모드] === */
+/* === [12. 모바일 전용: 가로 슬라이드 & 팝업 모드 (수정됨)] === */
 @media (max-width: 1023px) {
     .char-list-container {
         display: flex;
@@ -805,7 +805,7 @@ ul { list-style: none; }
         scroll-snap-type: x mandatory;
         height: 70vh;
         align-items: center;
-        padding: 0 50vw;
+        padding: 0 50vw; /* 첫 카드가 중앙에 오도록 여백 */
     }
 
     .char-card {
@@ -815,8 +815,11 @@ ul { list-style: none; }
         max-width: 320px;
         height: 55vh;
         margin: 0 15px;
+        
+        /* 평소 상태 */
         opacity: 0.5;
         transform: scale(0.9);
+        transition: transform 0.4s, opacity 0.4s; /* 부드러운 슬라이드 */
     }
 
     .char-card.active {
@@ -825,28 +828,48 @@ ul { list-style: none; }
         z-index: 10;
     }
 
-    /* 모바일 팝업 모드 (뒤집히면 전체화면) */
+    /* === [모바일 팝업 모드: 뒤집히면 화면 덮기] === */
     .char-card.flipped {
-        position: fixed;
-        top: 50%; left: 50%;
-        width: 90vw;
-        aspect-ratio: 16/9;
-        height: auto;
-        margin: 0;
+        /* 강제로 화면 기준 배치 */
+        position: fixed !important;
+        top: 50% !important;
+        left: 50% !important;
+        margin: 0 !important;
+        
+        /* 사이즈: 가로 화면 비율 강제 (유튜브 비율) */
+        width: 90vw !important;
+        aspect-ratio: 16/9 !important;
+        height: auto !important;
+        max-height: 80vh !important;
+        
+        /* 중앙 정렬 및 뒤집기 (순서 중요!) */
         transform: translate(-50%, -50%) rotateY(180deg) !important;
-        box-shadow: 0 0 50px rgba(255, 183, 213, 0.8);
+        
+        /* 제일 위로 */
+        z-index: 9999 !important;
+        box-shadow: 0 0 50px rgba(255, 183, 213, 0.9) !important;
     }
     
+    /* 팝업 시 배경 어둡게 처리 (Dimming) */
     .char-card.flipped::before {
         content: '';
         position: fixed;
-        top: -500vh; left: -500vw; right: -500vw; bottom: -500vh;
+        /* 화면보다 훨씬 크게 잡아서 빈틈없이 덮기 */
+        top: -200vh; left: -200vw; 
+        width: 400vw; height: 400vh;
+        
         background: rgba(0, 0, 0, 0.85);
-        transform: translateZ(-100px);
+        
+        /* 카드(card-inner)보다는 뒤에, 페이지보다는 앞에 */
+        transform: translateZ(-500px); 
         pointer-events: none;
     }
-}
 
+    /* 뒷면 이미지도 모바일 팝업에선 꽉 차게 */
+    .char-card.flipped .card-back {
+        background-size: cover !important;
+    }
+}
 
 /* === [데스크탑: 세로 리스트 & 와이드 모드] === */
 @media (min-width: 1024px) {
