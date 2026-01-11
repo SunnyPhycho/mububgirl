@@ -940,9 +940,8 @@ ul { list-style: none; }
     overflow: hidden; /* 이미지가 둥근 모서리 밖으로 안 나가게 */
 }
 
-/* 2. 뒷면 영역 (컨테이너) */
+/* 뒷면 컨테이너 */
 .card-back {
-    /* 기존 스타일 유지하되, 내부 정렬 추가 */
     position: absolute;
     width: 100%; height: 100%;
     backface-visibility: hidden;
@@ -951,13 +950,39 @@ ul { list-style: none; }
     overflow: hidden;
     background-color: #000;
     border: 2px solid #fff;
-    
-    /* 중요: 이미지를 중앙에 배치 */
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    /* 정렬용 */
+    display: flex; justify-content: center; align-items: center;
 }
 
+/* 1층: 움직이는 이미지 (img 태그) */
+.card-back img {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    z-index: 1; /* 맨 밑바닥 */
+}
+
+/* 2층: 홀로그램 반짝이 (가상 요소) */
+.card-back::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    /* 홀로그램 색상/애니메이션 */
+    background: linear-gradient(115deg, transparent 20%, rgba(255, 255, 255, 0.4) 25%, transparent 30%, transparent 45%, rgba(255, 183, 213, 0.6) 50%, transparent 55%);
+    background-size: 200% 200%;
+    opacity: 0.6; /* 이미지 보이게 반투명 */
+    pointer-events: none;
+    mix-blend-mode: overlay; /* 이미지랑 자연스럽게 섞이게 */
+    animation: holo-shine 4s infinite linear;
+    
+    z-index: 5; /* 이미지(1)보다 위에! */
+}
+
+/* 3층: 도장 */
+.old-stamp {
+    z-index: 10; /* 반짝이(5)보다 위에! */
+}
 /* 3. [핵심] 실제 이미지(img) 태그 공통 스타일 */
 /* 앞면(.card-visual) 안의 img, 뒷면(.card-back) 안의 img 모두 적용 */
 .card-visual img, 
