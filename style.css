@@ -828,24 +828,26 @@ ul { list-style: none; }
         z-index: 10;
     }
 
-    /* === [모바일 팝업 모드: 뒤집히면 화면 덮기] === */
+    /* === [모바일 팝업 모드 수정: 투명도/크기 강제 고정] === */
     .char-card.flipped {
-        /* 강제로 화면 기준 배치 */
+        /* 위치 강제 고정 */
         position: fixed !important;
         top: 50% !important;
         left: 50% !important;
         margin: 0 !important;
         
-        /* 사이즈: 가로 화면 비율 강제 (유튜브 비율) */
-        width: 90vw !important;
+        /* 크기 강제 (가로 꽉 차게) */
+        width: 90vw !important; 
         aspect-ratio: 16/9 !important;
         height: auto !important;
-        max-height: 80vh !important;
         
-        /* 중앙 정렬 및 뒤집기 (순서 중요!) */
-        transform: translate(-50%, -50%) rotateY(180deg) !important;
+        /* [중요] 투명도 해결: 감지기가 뭐라고 하든 무조건 100%로 보임 */
+        opacity: 1 !important; 
         
-        /* 제일 위로 */
+        /* [중요] 크기 해결: 무조건 정비례(scale 1)로 중앙 배치 */
+        transform: translate(-50%, -50%) rotateY(180deg) scale(1) !important;
+        
+        /* 맨 앞으로 가져오기 */
         z-index: 9999 !important;
         box-shadow: 0 0 50px rgba(255, 183, 213, 0.9) !important;
     }
