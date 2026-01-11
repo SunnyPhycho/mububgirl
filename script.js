@@ -35,14 +35,46 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (cards.length > 0 && container) {
 
-        // 2-1. 카드 뒤집기 & 별가루 이벤트
+                // 2-1. 카드 클릭 이벤트 (모바일 팝업 / 데스크탑 뒤집기 분기)
+        const overlay = document.getElementById('mobile-card-overlay');
+        const isMobile = window.innerWidth < 1024;
+
+        // 팝업 닫기 기능 (배경 클릭 시)
+        if (overlay) {
+            overlay.addEventListener('click', () => {
+                overlay.classList.remove('active');
+                overlay.innerHTML = ''; // 내용 비우기
+            });
+        }
+
         cards.forEach(card => {
             card.addEventListener('click', (e) => {
                 const inner = card.querySelector('.card-inner');
-                // 뒤집기 불가능한 카드(no-flip)가 아닐 때만 실행
-                if (inner && !inner.classList.contains('no-flip')) {
+                // 뒤집기 불가능한 카드 제외
+                if (!inner || inner.classList.contains('no-flip')) return;
+
+                // [모바일] 팝업 모드로 띄우기
+                if (window.innerWidth < 1024) {
+                    // 뒷면(card-back)만 복사해서 팝업에 넣음
+                    const backContent = card.querySelector('.card-back').cloneNode(true);
+                    
+                    const cloneContainer = document.createElement('div');
+                    cloneContainer.classList.add('popup-card-clone');
+                    cloneContainer.appendChild(backContent);
+                    
+                    overlay.innerHTML = ''; // 초기화
+                    overlay.appendChild(cloneContainer);
+                    
+                    // 팝업 띄우기
+                    overlay.classList.add('active');
+                    
+                    // 별가루 효과는 팝업 위에서 터지게
+                    createStarDust(cloneContainer);
+                } 
+                // [데스크탑] 기존대로 제자리 뒤집기
+                else {
                     card.classList.toggle('flipped');
-                    createStarDust(card); // 별가루 생성
+                    createStarDust(card);
                 }
             });
         });
