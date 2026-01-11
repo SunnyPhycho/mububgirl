@@ -1151,6 +1151,88 @@ ul { list-style: none; }
     background: #7f8c8d; border-color: #7f8c8d; box-shadow: 0 0 10px #7f8c8d;
 }
 
+/* --- [12. 모바일 카드 레이아웃 재배치 (Override)] --- */
+@media (max-width: 1023px) {
+    
+    /* 1. 하단 박스의 위치 기준(relative)을 해제하여 */
+    /* 자식 요소가 카드 전체(card-front)를 기준으로 움직이게 함 */
+    .card-info-wuxia {
+        position: static; 
+        display: block; /* flex 해제 */
+        padding: 10px; /* 여백 줄임 */
+    }
+
+    /* 2. 이름/스펙 정보: 좌측 상단으로 이동 (이미지 위로) */
+    .info-left {
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        z-index: 10; /* 이미지보다 위에 */
+        
+        /* 이름표 디자인 (배경 추가) */
+        background: rgba(244, 228, 188, 0.95); /* 종이색 */
+        border: 2px solid #5d4037;
+        border-radius: 8px;
+        padding: 8px 12px;
+        box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+        
+        /* 정렬 초기화 */
+        align-self: auto;
+        margin-bottom: 0;
+    }
+
+    /* 이름표 내부 폰트 조정 */
+    .wuxia-name {
+        font-size: 1.4rem;
+        border-bottom-width: 2px;
+    }
+    .wuxia-specs { font-size: 0.8rem; }
+    .wuxia-mbti { font-size: 0.75rem; }
+
+    /* 3. 한 마디 대사: 하단 영역 전체 차지 */
+    .info-right {
+        width: 100%;
+        max-width: 100%; /* 제한 해제 */
+        height: 100%;
+        padding-left: 0; /* 왼쪽 여백 제거 */
+        margin: 0;
+        
+        /* 중앙 정렬 */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .wuxia-quote {
+        width: 100%;
+        font-size: 1.4rem; /* 모바일에 맞게 조정 */
+        text-align: center;
+        background: rgba(255, 255, 255, 0.4); /* 배경 연하게 */
+        border-radius: 10px;
+        box-shadow: none;
+        padding: 10px;
+    }
+    
+        /* 4. 이미지 높이 조정 및 잘림 방지 */
+    .card-visual {
+        height: 70%; 
+        
+        /* [중요] 이미지가 잘리지 않게 설정 */
+        background-size: contain; /* 이미지가 다 보이게 맞춤 (여백 생김) */
+        background-repeat: no-repeat; /* 반복 방지 */
+        background-position: center; /* 정중앙 배치 */
+        
+        /* 여백 부분을 어둡게 처리하여 사진틀처럼 보이게 함 */
+        background-color: #1a1a1a; 
+        border-bottom: 2px dashed #5d4037; /* 사진과 텍스트 구분선 */
+    }
+    
+    .card-info-wuxia {
+        height: 30%; /* 텍스트 영역은 줄임 (대사만 들어가니까) */
+    }
+}
+
+
 
 /* --- [13. 제작자의 말 (comment.html) 스타일] --- */
 
