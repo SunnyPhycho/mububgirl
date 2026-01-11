@@ -678,6 +678,352 @@ ul { list-style: none; }
     100% { box-shadow: 0 0 5px #ff0055; }
 }
 
+/* --- [10. 캐릭터 페이지 (char.html) - 최종 통합본] --- */
+
+.char-wrapper {
+    padding-top: 100px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-bottom: 50px;
+}
+
+/* 10-1. 필터 패널 */
+.filter-panel {
+    background: transparent;
+    padding: 0 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    position: relative;
+    z-index: 100;
+}
+
+.filter-title {
+    font-size: 1.2rem;
+    color: #fff;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px rgba(255, 183, 213, 0.5);
+    display: inline-block;
+    border-bottom: 2px solid var(--color-magic-pink);
+    padding-bottom: 5px;
+}
+
+.filter-groups {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+.filter-group {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.filter-label-text {
+    color: #aaa;
+    font-size: 0.9rem;
+    margin-right: 5px;
+    font-weight: bold;
+}
+
+.filter-btn input[type="checkbox"] { display: none; }
+
+.filter-btn span {
+    display: inline-block;
+    padding: 8px 16px;
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid #555;
+    border-radius: 20px;
+    color: #bbb;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    user-select: none;
+}
+
+.filter-btn:hover span { border-color: #fff; color: #fff; }
+
+/* 체크 상태 색상 */
+.filter-btn input:checked + span { background: var(--color-blood-red); color: #fff; border-color: var(--color-blood-red); box-shadow: 0 0 10px var(--color-blood-red); font-weight: bold; }
+.filter-btn.contract-good input:checked + span { background: #3498db; border-color: #3498db; box-shadow: 0 0 10px #3498db; }
+.filter-btn.contract-evil input:checked + span { background: #e74c3c; border-color: #e74c3c; box-shadow: 0 0 10px #e74c3c; }
+.filter-btn.contract-none input:checked + span { background: #7f8c8d; border-color: #7f8c8d; box-shadow: 0 0 10px #7f8c8d; }
+
+/* 소속 필터 색상 */
+.filter-btn.faction-jeongpa input:checked + span { background: #2980b9; border-color: #2980b9; box-shadow: 0 0 10px #2980b9; }
+.filter-btn.faction-sapa input:checked + span { background: #27ae60; border-color: #27ae60; box-shadow: 0 0 10px #27ae60; }
+.filter-btn.faction-magyo input:checked + span { background: #800000; border-color: #800000; box-shadow: 0 0 10px #800000; }
+.filter-btn.faction-etc input:checked + span { background: #7f8c8d; border-color: #7f8c8d; box-shadow: 0 0 10px #7f8c8d; }
+
+
+/* 10-2. 카드 리스트 컨테이너 (슬라이더) */
+.char-list-container {
+    width: 100%;
+    margin: 0 auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+}
+.char-list-container::-webkit-scrollbar { display: none; }
+
+
+/* 10-3. 카드 공통 및 3D 플립 (변형 마법 포함) */
+.char-card {
+    position: relative;
+    perspective: 1500px;
+    cursor: pointer;
+    z-index: 1;
+    
+    /* 크기/투명도/위치 변화 애니메이션 */
+    transition: 
+        transform 0.6s, 
+        opacity 0.6s, 
+        width 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+        height 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.char-card.flipped { z-index: 100 !important; }
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform-style: preserve-3d;
+}
+
+.char-card.flipped .card-inner { transform: rotateY(180deg); }
+
+
+/* === [모바일: 가로 슬라이드 & 팝업 모드] === */
+@media (max-width: 1023px) {
+    .char-list-container {
+        display: flex;
+        flex-direction: row;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-snap-type: x mandatory;
+        height: 70vh;
+        align-items: center;
+        padding: 0 50vw;
+    }
+
+    .char-card {
+        scroll-snap-align: center;
+        flex-shrink: 0;
+        width: 80vw; 
+        max-width: 320px;
+        height: 55vh;
+        margin: 0 15px;
+        opacity: 0.5;
+        transform: scale(0.9);
+    }
+
+    .char-card.active {
+        opacity: 1;
+        transform: scale(1);
+        z-index: 10;
+    }
+
+    /* 모바일 팝업 모드 (뒤집히면 전체화면) */
+    .char-card.flipped {
+        position: fixed;
+        top: 50%; left: 50%;
+        width: 90vw;
+        aspect-ratio: 16/9;
+        height: auto;
+        margin: 0;
+        transform: translate(-50%, -50%) rotateY(180deg) !important;
+        box-shadow: 0 0 50px rgba(255, 183, 213, 0.8);
+    }
+    
+    .char-card.flipped::before {
+        content: '';
+        position: fixed;
+        top: -500vh; left: -500vw; right: -500vw; bottom: -500vh;
+        background: rgba(0, 0, 0, 0.85);
+        transform: translateZ(-100px);
+        pointer-events: none;
+    }
+}
+
+
+/* === [데스크탑: 세로 리스트 & 와이드 모드] === */
+@media (min-width: 1024px) {
+    .char-list-container {
+        display: block;
+        overflow-y: auto;
+        overflow-x: hidden;
+        scroll-snap-type: y mandatory;
+        height: 600px;
+        position: relative;
+    }
+
+    /* 평소 크기 */
+    .char-card {
+        width: 700px;
+        height: 400px;
+        scroll-snap-align: center;
+        margin: 50px auto;
+        opacity: 0.3;
+        transform: scale(0.9) translateY(20px);
+    }
+
+    .char-card.active {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+        box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    }
+
+    /* 뒤집히면 더 커짐 (와이드 모드) */
+    .char-card.flipped {
+        width: 850px; 
+        height: 510px; 
+        transform: translateY(-20px) !important;
+    }
+}
+
+
+/* 10-4. 카드 앞면 (무협) 디자인 */
+.card-front {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    background-color: #f4e4bc;
+    background-image: 
+        linear-gradient(rgba(0,0,0,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,0,0,0.05) 1px, transparent 1px),
+        radial-gradient(#d3c092 15%, transparent 16%);
+    background-size: 20px 20px, 20px 20px, 5px 5px;
+    border: 6px solid #4a3b2a;
+    border-radius: 15px;
+    box-shadow: inset 0 0 40px rgba(93, 64, 55, 0.3);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.card-visual {
+    height: 65%;
+    background-color: #333;
+    background-size: cover;
+    background-position: top center;
+    border-bottom: 4px double #4a3b2a;
+    position: relative;
+}
+
+/* 텍스트 정보 */
+.card-info-wuxia {
+    height: 35%;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.info-left {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    z-index: 2;
+    flex-shrink: 0;
+    align-self: flex-end;
+    margin-bottom: 5px;
+}
+
+.wuxia-name {
+    font-size: 1.8rem;
+    font-weight: 800;
+    line-height: 1;
+    color: #2c1a16;
+    border-bottom: 3px solid #8a1c1c;
+    display: inline-block;
+    padding-bottom: 3px;
+    margin-bottom: 2px;
+    white-space: nowrap;
+}
+
+.wuxia-specs { font-size: 0.9rem; font-weight: bold; color: #5d4037; }
+.wuxia-mbti { font-size: 0.85rem; color: #8a1c1c; font-weight: 700; letter-spacing: 0.5px; }
+
+.info-right {
+    text-align: right;
+    flex-grow: 1;
+    padding-left: 20px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 100%;
+}
+
+.wuxia-quote {
+    font-style: italic;
+    font-size: 1.4rem;
+    line-height: 1.5;
+    color: #3e2723;
+    font-weight: 600;
+    word-break: keep-all;
+    background: rgba(255, 255, 255, 0.5);
+    padding: 15px;
+    border-radius: 15px 15px 0 15px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+.char-card:hover .wuxia-quote { transform: translateY(-5px) scale(1.02); background: rgba(255, 255, 255, 0.8); }
+
+
+/* 10-5. 카드 뒷면 (마법) 디자인 */
+.card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    transform: rotateY(180deg);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(255, 183, 213, 0.5);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #000;
+    border: 2px solid #fff;
+}
+
+/* 홀로그램 */
+.card-back::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(115deg, transparent 20%, rgba(255, 255, 255, 0.4) 25%, transparent 30%, transparent 45%, rgba(255, 183, 213, 0.6) 50%, transparent 55%);
+    background-size: 200% 200%;
+    opacity: 0.7;
+    pointer-events: none;
+    mix-blend-mode: overlay;
+    animation: holo-shine 4s infinite linear;
+}
+@keyframes holo-shine { 0% { background-position: 200% 0%; } 100% { background-position: -200% 0%; } }
+
+/* 촌스러운 한자 도장 */
+.old-stamp {
+    position: absolute;
+    bottom: 20px; right: 20px;
+    width: 60px; height: 60px;
+    display: flex; justify-content: center; align-items: center;
+    font-family: var(--font-serif);
+    font-size: 2.5rem; font-weight: 800; line-height: 1;
+    border: 3px solid currentColor; border-radius: 50%;
+    z-index: 10;
+    transform: rotate(-15deg);
+    backdrop-filter: blur(2px); background: rgba(255, 255, 255, 0.2); 
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+}
+.old-stamp.good { color: #3498db; border-color: #3498db; }
+.old-stamp.evil { color: #e74c3c; border-color: #e74c3c; }
+.old-stamp.none { display: none; }
+
 /* --- [11. 슈퍼노바 이펙트 (수정됨)] --- */
 .star-particle {
     position: fixed; /* 화면 전체 기준 */
@@ -805,450 +1151,6 @@ ul { list-style: none; }
     background: #7f8c8d; border-color: #7f8c8d; box-shadow: 0 0 10px #7f8c8d;
 }
 
-
-/* --- [10. 캐릭터 페이지: 카드 슬라이더 (Carousel) 리뉴얼] --- */
-
-/* 10-1. 필터 패널 (수정: 잘림 방지) */
-.filter-panel {
-    background: transparent;
-    padding: 0 20px;
-    margin-bottom: 20px;
-    text-align: center;
-    position: relative;
-    z-index: 100; /* 카드보다 위에 오도록 */
-}
-/* (나머지 필터 버튼 스타일은 이전과 동일, 생략 가능) */
-
-
-/* 10-2. 슬라이더 컨테이너 (여기가 핵심입니다) */
-.char-list-container {
-    /* 화면 중앙에 위치 */
-    width: 100%;
-    margin: 0 auto;
-    
-    /* 스크롤 스냅 설정 */
-    scroll-behavior: smooth; /* 부드러운 이동 */
-    
-    /* 스크롤바 숨기기 (깔끔하게) */
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE/Edge */
-}
-.char-list-container::-webkit-scrollbar {
-    display: none; /* Chrome/Safari */
-}
-
-
-/* === [모바일: 가로(Horizontal) 슬라이드] === */
-@media (max-width: 1023px) {
-    .char-list-container {
-        display: flex;
-        flex-direction: row;
-        
-        /* 가로 스크롤 & 스냅 */
-        overflow-x: auto;
-        overflow-y: hidden;
-        scroll-snap-type: x mandatory; /* x축 강제 스냅 */
-        
-        height: 70vh; /* 화면 높이의 70% 차지 */
-        align-items: center; /* 세로 중앙 정렬 */
-        padding: 0 50vw; /* 좌우 여백을 줘서 첫 카드가 중앙에 오게 */
-    }
-
-    .char-card {
-        scroll-snap-align: center; /* 중앙에 멈춤 */
-        flex-shrink: 0;
-        
-        /* 모바일 카드 크기 */
-        width: 80vw; 
-        max-width: 320px;
-        height: 55vh;
-        margin: 0 15px; /* 카드 간 간격 */
-        
-        /* 선택되지 않은 카드 흐리게 처리 (연출) */
-        opacity: 0.5;
-        transform: scale(0.9);
-        transition: all 0.5s ease;
-    }
-
-    /* 중앙에 온 카드만 강조 */
-    .char-card.active {
-        opacity: 1;
-        transform: scale(1);
-        z-index: 10;
-    }
-}
-
-
-/* === [데스크탑: 세로(Vertical) 슬라이드] === */
-@media (min-width: 1024px) {
-    .char-list-container {
-        display: block; /* 블록 요소 */
-        
-        /* 세로 스크롤 & 스냅 */
-        overflow-y: auto;
-        overflow-x: hidden;
-        scroll-snap-type: y mandatory; /* y축 강제 스냅 */
-        
-        height: 600px; /* 뷰포트 높이 고정 (이 안에서만 스크롤) */
-        position: relative;
-    }
-
-    .char-card {
-        scroll-snap-align: center; /* 중앙에 멈춤 */
-        margin: 50px auto; /* 위아래 간격 */
-        
-        /* 데스크탑 카드 크기 (가로형) */
-        width: 700px;
-        height: 550px;
-        
-        /* 등장 연출 */
-        opacity: 0.3;
-        transform: scale(0.9) translateY(20px);
-        transition: all 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
-    }
-
-    /* 중앙에 온 카드 강조 */
-    .char-card.active {
-        opacity: 1;
-        transform: scale(1) translateY(0);
-        box-shadow: 0 20px 50px rgba(0,0,0,0.5); /* 붕 뜬 느낌 */
-    }
-}
-
-
-/* 10-3. 카드 내부 디자인 (이전과 동일하지만 크기 대응) */
-.char-card {
-    position: relative;
-    perspective: 1500px;
-    cursor: pointer;
-}
-
-.card-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    transform-style: preserve-3d;
-}
-
-.char-card.flipped .card-inner {
-    transform: rotateY(180deg);
-}
-
-/* ... (이하 card-front, card-back, old-stamp 등 디자인은 이전 코드 유지) ... */
-/* 단, card-visual 등의 비율은 유지됩니다. */
-
-/* --- [10. 수집형 카드 게임(CCG) 스타일 (리뉴얼)] --- */
-
-/* (컨테이너와 기본 틀 char-list-container, char-card 등은 기존 유지) */
-
-/* === [앞면: 무협 프로필 (수정됨)] === */
-.card-front {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    
-    /* 1. 세계관 페이지의 그 '종이 질감' 적용 */
-    background-color: #f4e4bc;
-    background-image: 
-        linear-gradient(rgba(0,0,0,0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0,0,0,0.05) 1px, transparent 1px),
-        radial-gradient(#d3c092 15%, transparent 16%);
-    background-size: 20px 20px, 20px 20px, 5px 5px;
-    
-    border: 6px solid #4a3b2a; /* 짙은 나무색 테두리 */
-    border-radius: 15px;
-    box-shadow: inset 0 0 40px rgba(93, 64, 55, 0.3); /* 안쪽 그림자로 낡은 느낌 */
-    
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-}
-
-/* 이미지 영역 (상단 65% - 좀 더 넓게 잡음) */
-.card-visual {
-    height: 65%;
-    background-color: #333;
-    background-size: cover;
-    background-position: top center;
-    border-bottom: 4px double #4a3b2a;
-    position: relative;
-}
-
-/* 텍스트 정보 영역 (하단 35% - 수정됨) */
-.card-info-wuxia {
-    height: 35%;
-    padding: 15px 20px; /* 내부 여백 확보 */
-    display: flex;
-    justify-content: space-between;
-    align-items: center; /* 수직 중앙 정렬로 변경 (공간 채우기 위함) */
-    position: relative;
-}
-
-/* [좌측] 이름 및 스펙 (좌측 하단에 고정) */
-.info-left {
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    z-index: 2;
-    flex-shrink: 0;
-    
-    /* flex 컨테이너 안에서 혼자 바닥으로 밀기 */
-    align-self: flex-end; 
-    margin-bottom: 5px; /* 바닥에서 살짝 띄움 */
-}
-
-.wuxia-name {
-    font-size: 1.8rem;
-    font-weight: 800;
-    line-height: 1;
-    color: #2c1a16;
-    border-bottom: 3px solid #8a1c1c;
-    display: inline-block;
-    padding-bottom: 3px;
-    margin-bottom: 2px;
-    white-space: nowrap; /* 이름 줄바꿈 방지 */
-}
-
-.wuxia-specs {
-    font-size: 0.9rem;
-    font-weight: bold;
-    color: #5d4037;
-}
-
-.wuxia-mbti {
-    font-size: 0.85rem;
-    color: #8a1c1c;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-}
-
-/* [우측] 한 마디 (공간 확장) */
-.info-right {
-    text-align: right;
-    flex-grow: 1; /* 남은 공간 모두 차지 */
-    padding-left: 20px; /* 이름과 겹치지 않게 여백 */
-    display: flex;
-    justify-content: flex-end;
-    align-items: center; /* 대사를 세로 중앙에 배치 */
-    height: 100%; /* 높이 꽉 채우기 */
-}
-
-.wuxia-quote {
-    font-style: italic;
-    font-size: 1.75rem; /* 폰트 대폭 키움 */
-    line-height: 1.4;
-    color: #3e2723;
-    font-weight: 600;
-    word-break: keep-all; /* 단어 단위 줄바꿈 */
-    
-    /* 강조 배경 스타일 */
-    background: rgba(255, 255, 255, 0.5);
-    padding: 15px;
-    border-radius: 15px 15px 0 15px; /* 말풍선 느낌 살짝 */
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
-    
-    /* 애니메이션: 카드가 보일 때 살짝 떠오르게 */
-    transition: transform 0.3s ease;
-}
-
-/* 마우스 올리면 대사가 살짝 튀어오름 */
-.char-card:hover .wuxia-quote {
-    transform: translateY(-5px) scale(1.02);
-    background: rgba(255, 255, 255, 0.8);
-}
-
-/* === [뒷면: 풀 일러스트 + 촌스러운 한자] === */
-.card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    transform: rotateY(180deg);
-    
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 0 20px rgba(255, 183, 213, 0.5);
-    
-    /* 배경 이미지가 카드 전체를 덮음 */
-    background-size: cover;
-    background-position: center;
-    background-color: #000;
-}
-
-/* 홀로그램 코팅 효과 (포켓몬 카드 느낌) */
-.card-back::after {
-    content: "";
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: linear-gradient(
-        115deg, 
-        transparent 20%, 
-        rgba(255, 255, 255, 0.4) 25%, 
-        transparent 30%, 
-        transparent 45%, 
-        rgba(255, 183, 213, 0.6) 50%, 
-        transparent 55%
-    );
-    background-size: 200% 200%;
-    opacity: 0.7;
-    pointer-events: none;
-    mix-blend-mode: overlay; /* 이미지와 자연스럽게 섞임 */
-    animation: holo-shine 4s infinite linear;
-}
-
-@keyframes holo-shine {
-    0% { background-position: 200% 0%; }
-    100% { background-position: -200% 0%; }
-}
-
-/* 촌스러운 한자 아이콘 (Old Stamp) */
-.old-stamp {
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
-    width: 60px;
-    height: 60px;
-    
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-    font-family: var(--font-serif); /* 궁서체 느낌 */
-    font-size: 2.5rem;
-    font-weight: 800;
-    line-height: 1;
-    
-    border: 3px solid currentColor; /* 글자색과 동일한 테두리 */
-    border-radius: 50%; /* 원형 도장 */
-    
-    z-index: 10; /* 홀로그램보다 위에 */
-    transform: rotate(-15deg); /* 약간 삐딱하게 */
-    
-    /* 종이에 찍힌 듯한 거친 느낌 (마스크 효과 대용) */
-    backdrop-filter: blur(2px);
-    background: rgba(255, 255, 255, 0.2); 
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
-}
-
-/* 성향별 도장 색상 */
-.old-stamp.good { color: #3498db; border-color: #3498db; } /* 파란 도장 */
-.old-stamp.evil { color: #e74c3c; border-color: #e74c3c; } /* 빨간 인주 도장 */
-.old-stamp.none { display: none; } /* 미계약은 변신이 없으니 표시 안함 */
-
-/* --- [12. 모바일 카드 레이아웃 재배치 (Override)] --- */
-@media (max-width: 1023px) {
-    
-    /* 1. 하단 박스의 위치 기준(relative)을 해제하여 */
-    /* 자식 요소가 카드 전체(card-front)를 기준으로 움직이게 함 */
-    .card-info-wuxia {
-        position: static; 
-        display: block; /* flex 해제 */
-        padding: 10px; /* 여백 줄임 */
-    }
-
-    /* 2. 이름/스펙 정보: 좌측 상단으로 이동 (이미지 위로) */
-    .info-left {
-        position: absolute;
-        top: 15px;
-        left: 15px;
-        z-index: 10; /* 이미지보다 위에 */
-        
-        /* 이름표 디자인 (배경 추가) */
-        background: rgba(244, 228, 188, 0.95); /* 종이색 */
-        border: 2px solid #5d4037;
-        border-radius: 8px;
-        padding: 8px 12px;
-        box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
-        
-        /* 정렬 초기화 */
-        align-self: auto;
-        margin-bottom: 0;
-    }
-
-    /* 이름표 내부 폰트 조정 */
-    .wuxia-name {
-        font-size: 1.4rem;
-        border-bottom-width: 2px;
-    }
-    .wuxia-specs { font-size: 0.8rem; }
-    .wuxia-mbti { font-size: 0.75rem; }
-
-    /* 3. 한 마디 대사: 하단 영역 전체 차지 */
-    .info-right {
-        width: 100%;
-        max-width: 100%; /* 제한 해제 */
-        height: 100%;
-        padding-left: 0; /* 왼쪽 여백 제거 */
-        margin: 0;
-        
-        /* 중앙 정렬 */
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .wuxia-quote {
-        width: 100%;
-        font-size: 1.4rem; /* 모바일에 맞게 조정 */
-        text-align: center;
-        background: rgba(255, 255, 255, 0.4); /* 배경 연하게 */
-        border-radius: 10px;
-        box-shadow: none;
-        padding: 10px;
-    }
-    
-        /* 4. 이미지 높이 조정 및 잘림 방지 */
-    .card-visual {
-        height: 70%; 
-        
-        /* [중요] 이미지가 잘리지 않게 설정 */
-        background-size: contain; /* 이미지가 다 보이게 맞춤 (여백 생김) */
-        background-repeat: no-repeat; /* 반복 방지 */
-        background-position: center; /* 정중앙 배치 */
-        
-        /* 여백 부분을 어둡게 처리하여 사진틀처럼 보이게 함 */
-        background-color: #1a1a1a; 
-        border-bottom: 2px dashed #5d4037; /* 사진과 텍스트 구분선 */
-    }
-    
-    .card-info-wuxia {
-        height: 30%; /* 텍스트 영역은 줄임 (대사만 들어가니까) */
-    }
-
-    /* 뒤집혔을 때 (변신 모드) */
-    .char-card.flipped {
-        /* 리스트 흐름에서 빠져나와 화면 전체를 덮음 */
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        
-        /* 16:9 가로 비율 강제 적용 */
-        width: 90vw; /* 화면 너비의 90% */
-        aspect-ratio: 16/9; /* 유튜브 영상 비율 */
-        height: auto; /* 높이는 비율에 맞게 자동 */
-        
-        margin: 0;
-        
-        /* 화면 중앙 정렬을 위한 트랜스폼 */
-        /* scale(1)로 원복 + 중앙 이동 + 뒤집기(180deg) */
-        transform: translate(-50%, -50%) rotateY(180deg) !important;
-        
-        box-shadow: 0 0 50px rgba(255, 183, 213, 0.8); /* 마법광채 */
-    }
-
-    /* 팝업 시 배경을 어둡게 할 가상 요소 (선택사항) */
-    .char-card.flipped::before {
-        content: '';
-        position: fixed;
-        top: -500vh; left: -500vw; right: -500vw; bottom: -500vh; /* 화면 전체 뒤덮기 */
-        background: rgba(0, 0, 0, 0.8); /* 어두운 배경 */
-        transform: translateZ(-100px); /* 카드보다 뒤에 */
-        pointer-events: none;
-    }
-}
 
 /* --- [13. 제작자의 말 (comment.html) 스타일] --- */
 
