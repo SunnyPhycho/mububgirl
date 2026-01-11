@@ -929,13 +929,62 @@ ul { list-style: none; }
     overflow: hidden;
 }
 
+/* --- [이미지 태그(img) 전용 스타일] --- */
+
+/* 1. 앞면 이미지 영역 (컨테이너) */
 .card-visual {
-    height: 65%;
-    background-color: #333;
-    background-size: cover;
-    background-position: top center;
+    height: 65%; /* 높이 설정 유지 */
+    background-color: #333; /* 이미지 로딩 전 배경색 */
     border-bottom: 4px double #4a3b2a;
     position: relative;
+    overflow: hidden; /* 이미지가 둥근 모서리 밖으로 안 나가게 */
+}
+
+/* 2. 뒷면 영역 (컨테이너) */
+.card-back {
+    /* 기존 스타일 유지하되, 내부 정렬 추가 */
+    position: absolute;
+    width: 100%; height: 100%;
+    backface-visibility: hidden;
+    transform: rotateY(180deg);
+    border-radius: 15px;
+    overflow: hidden;
+    background-color: #000;
+    border: 2px solid #fff;
+    
+    /* 중요: 이미지를 중앙에 배치 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 3. [핵심] 실제 이미지(img) 태그 공통 스타일 */
+/* 앞면(.card-visual) 안의 img, 뒷면(.card-back) 안의 img 모두 적용 */
+.card-visual img, 
+.card-back img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 비율 유지하며 꽉 채우기 */
+    display: block; /* 하단 공백 제거 */
+    position: absolute; /* 겹치기 용이하게 */
+    top: 0; left: 0;
+}
+
+/* 뒷면의 홀로그램/도장은 이미지보다 위에 있어야 함 */
+.card-back::after { z-index: 5; } /* 홀로그램 */
+.old-stamp { z-index: 10; } /* 도장 */
+.card-back img { z-index: 1; } /* 이미지는 맨 뒤 */
+
+/* 모바일 전용: 앞면 이미지 비율 조정 (contain) */
+@media (max-width: 1023px) {
+    .card-visual {
+        height: 70%;
+        background-color: #1a1a1a;
+    }
+    
+    .card-visual img {
+        object-fit: contain; /* 잘리지 않고 다 보이게 */
+    }
 }
 
 /* 텍스트 정보 */
@@ -999,39 +1048,6 @@ ul { list-style: none; }
 }
 .char-card:hover .wuxia-quote { transform: translateY(-5px) scale(1.02); background: rgba(255, 255, 255, 0.8); }
 
-
-/* 뒷면 컨테이너는 이제 이미지를 감싸는 액자 역할만 합니다 */
-.card-back {
-    /* 기존 background-image 관련 속성은 무시됨 */
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    transform: rotateY(180deg);
-    border-radius: 15px;
-    overflow: hidden; /* 이미지가 튀어나가지 않게 */
-    background-color: #000;
-    border: 2px solid #fff;
-    
-    /* 중요: 이미지를 중앙 정렬하기 위해 flex 사용 */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* [추가] 실제 움직이는 이미지를 담당할 클래스 */
-.card-back-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* 이미지를 카드 크기에 꽉 차게 (비율 유지) */
-    position: absolute;
-    top: 0; left: 0;
-    z-index: 1; /* 도장이나 홀로그램보다 뒤에 */
-}
-
-/* 홀로그램과 도장은 이미지보다 위에 떠야 함 (z-index 조정) */
-.card-back::after { z-index: 5; } /* 홀로그램 */
-.old-stamp { z-index: 10; } /* 도장 */
 
 /* 촌스러운 한자 도장 */
 .old-stamp {
